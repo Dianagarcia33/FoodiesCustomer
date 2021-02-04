@@ -68,7 +68,7 @@
 
 
         <Button
-            android:id="@+id/btn_next_slider"
+            android:id="@+id/btnAdondeLollevamos"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="20dp"
