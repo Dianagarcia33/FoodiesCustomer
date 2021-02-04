@@ -174,22 +174,10 @@ public class SplashScreen extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
 
-                    Intent i = new Intent(SplashScreen.this, MapsActivity.class);
-                    startActivityForResult(i, PERMISSION_DATA_ACCESS_CODE);
+                    if (!getCurrentLocationAddress.isEmpty()) {
 
-                }
-            });
-
-
-            if (!getCurrentLocationAddress.isEmpty()) {
-
-                main_welcome_screen_layout.setVisibility(View.GONE);
-                main_splash_layout.setVisibility(View.VISIBLE);
-
-  /*              new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
+                        main_welcome_screen_layout.setVisibility(View.GONE);
+                        main_splash_layout.setVisibility(View.VISIBLE);
 
                         String getUserType = sharedPreferences.getString(PreferenceClass.USER_TYPE, "");
                         boolean getLoINSession = sharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
@@ -207,14 +195,21 @@ public class SplashScreen extends AppCompatActivity implements
                             }
 
                         }
+
+                    } else {
+
+                        displayLocation();
+                        Intent i = new Intent(SplashScreen.this, MapsActivity.class);
+                        startActivityForResult(i, PERMISSION_DATA_ACCESS_CODE);
                     }
-                }, SPLASH_TIME_OUT);
-*/
-            } else {
 
-                displayLocation();
 
-            }
+
+                }
+            });
+
+
+
 
         }catch (Exception e){
 
