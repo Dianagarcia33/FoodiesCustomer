@@ -20,9 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -33,7 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.foodies.customer.Adapters.SliderPagerAdapter;
 import com.foodies.customer.BuildConfig;
 import com.foodies.customer.Constants.GpsUtils;
 import com.foodies.customer.Constants.PreferenceClass;
@@ -84,8 +80,6 @@ public class SplashScreen extends AppCompatActivity implements
     private static final int PERMISSION_DATA_ACCESS_CODE = 2;
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
-    private ViewPager pager;
-    private PagerAdapter pagerAdapter;
 
 
     @Override
@@ -129,17 +123,6 @@ public class SplashScreen extends AppCompatActivity implements
 
             setContentView(R.layout.splash);
 
-            List<Fragment> list = new ArrayList<>();
-            list.add(new PagerFragments1());
-            list.add(new PagerFragments2());
-            list.add(new PagerFragments3());
-            list.add(new PagerFragments4());
-
-            pager = findViewById(R.id.pagerView);
-            pagerAdapter = new SliderPagerAdapter(getSupportFragmentManager(),list);
-
-            pager.setAdapter(pagerAdapter);
-
             VERSION_CODE = BuildConfig.VERSION_NAME;
 
             final String android_id = Settings.Secure.getString(getContentResolver(),
@@ -174,10 +157,22 @@ public class SplashScreen extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
 
-                    if (!getCurrentLocationAddress.isEmpty()) {
+                    Intent i = new Intent(SplashScreen.this, MapsActivity.class);
+                    startActivityForResult(i, PERMISSION_DATA_ACCESS_CODE);
 
-                        main_welcome_screen_layout.setVisibility(View.GONE);
-                        main_splash_layout.setVisibility(View.VISIBLE);
+                }
+            });
+
+
+            if (!getCurrentLocationAddress.isEmpty()) {
+
+                main_welcome_screen_layout.setVisibility(View.GONE);
+                main_splash_layout.setVisibility(View.VISIBLE);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
 
                         String getUserType = sharedPreferences.getString(PreferenceClass.USER_TYPE, "");
                         boolean getLoINSession = sharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
@@ -195,21 +190,14 @@ public class SplashScreen extends AppCompatActivity implements
                             }
 
                         }
-
-                    } else {
-
-                        displayLocation();
-                        Intent i = new Intent(SplashScreen.this, MapsActivity.class);
-                        startActivityForResult(i, PERMISSION_DATA_ACCESS_CODE);
                     }
+                }, SPLASH_TIME_OUT);
 
+            } else {
 
+                displayLocation();
 
-                }
-            });
-
-
-
+            }
 
         }catch (Exception e){
 
@@ -365,7 +353,7 @@ public class SplashScreen extends AppCompatActivity implements
         }
 
 
-        }
+    }
 
     public Address getAddress(double latitude,double longitude) {
         Geocoder geocoder;
@@ -454,49 +442,49 @@ public class SplashScreen extends AppCompatActivity implements
                 for (Location location : locationResult.getLocations()) {
                     if (location != null) {
 
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
 
-                            Address locationAddress;
+                        Address locationAddress;
 
-                            locationAddress = getAddress(latitude, longitude);
-                            if (locationAddress != null) {
+                        locationAddress = getAddress(latitude, longitude);
+                        if (locationAddress != null) {
 
-                                String city = "";
-                                if (locationAddress.getLocality() != null && !locationAddress.getLocality().equals("null"))
-                                    city = "" + locationAddress.getLocality();
+                            String city = "";
+                            if (locationAddress.getLocality() != null && !locationAddress.getLocality().equals("null"))
+                                city = "" + locationAddress.getLocality();
 
-                                String country = "";
-                                if (locationAddress.getCountryName() != null && !locationAddress.getCountryName().equals("null"))
-                                    country = "" + locationAddress.getCountryName();
+                            String country = "";
+                            if (locationAddress.getCountryName() != null && !locationAddress.getCountryName().equals("null"))
+                                country = "" + locationAddress.getCountryName();
 
 
-                                if (!getCurrentLocationAddress.isEmpty()) {
-                                    welcome_location_txt.setText(getCurrentLocationAddress);
-                                } else {
+                            if (!getCurrentLocationAddress.isEmpty()) {
+                                welcome_location_txt.setText(getCurrentLocationAddress);
+                            } else {
 
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString(PreferenceClass.CURRENT_LOCATION_LAT_LONG, latitude + "," + longitude);
-                                    editor.putString(PreferenceClass.CURRENT_LOCATION_ADDRESS, city + " " + country);
-                                    editor.putString(PreferenceClass.LATITUDE, String.valueOf(latitude));
-                                    editor.putString(PreferenceClass.LONGITUDE, String.valueOf(longitude));
-                                    editor.commit();
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString(PreferenceClass.CURRENT_LOCATION_LAT_LONG, latitude + "," + longitude);
+                                editor.putString(PreferenceClass.CURRENT_LOCATION_ADDRESS, city + " " + country);
+                                editor.putString(PreferenceClass.LATITUDE, String.valueOf(latitude));
+                                editor.putString(PreferenceClass.LONGITUDE, String.valueOf(longitude));
+                                editor.commit();
 
-                                    welcome_location_txt.setText(getCurrentLocationAddress);
-                                    welcome_location_txt.setText(city + " " + country);
-                                }
-
+                                welcome_location_txt.setText(getCurrentLocationAddress);
+                                welcome_location_txt.setText(city + " " + country);
                             }
-
-                        } else {
-
-                            welcome_location_txt
-                                    .setText("Kalma Chowk, Lahore");
 
                         }
 
+                    } else {
 
-                        stopLocationUpdates();
+                        welcome_location_txt
+                                .setText("Kalma Chowk, Lahore");
+
+                    }
+
+
+                    stopLocationUpdates();
 
 
                 }
@@ -511,7 +499,7 @@ public class SplashScreen extends AppCompatActivity implements
 
     protected void stopLocationUpdates() {
         if(mFusedLocationClient!=null && locationCallback!=null)
-        mFusedLocationClient.removeLocationUpdates(locationCallback);
+            mFusedLocationClient.removeLocationUpdates(locationCallback);
     }
 
 
