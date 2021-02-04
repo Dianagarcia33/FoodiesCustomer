@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5212855917",
+    "firebase_url": "https://maxi-5e807-default-rtdb.firebaseio.com",
+    "project_id": "maxi-5e807",
+    "storage_bucket": "maxi-5e807.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5212855917:android:a94e24a437d18c7896e964",
+        "android_client_info": {
+          "package_name": "com.maxi.cliente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5212855917-9bsd54b2ga5v2kuslpgsvln1j053adsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPZoM5p4XdQNlLqxdcKe-oT798uZwnkX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5212855917-9bsd54b2ga5v2kuslpgsvln1j053adsa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

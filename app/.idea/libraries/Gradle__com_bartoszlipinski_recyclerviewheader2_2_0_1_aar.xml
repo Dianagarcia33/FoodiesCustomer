@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bartoszlipinski:recyclerviewheader2:2.0.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d35b3700696acd4aa9a66f46659665c/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d35b3700696acd4aa9a66f46659665c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d35b3700696acd4aa9a66f46659665c/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bartoszlipinski/recyclerviewheader2/2.0.1/ec70a516e6d81707507bd9b072461aa3932deadb/recyclerviewheader2-2.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bartoszlipinski/recyclerviewheader2/2.0.1/36edb3851468ca35862449eb76bae465628211ba/recyclerviewheader2-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ar-android:DrawRouteMaps:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/07db8edfe53306f810f884b448e60f03/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/07db8edfe53306f810f884b448e60f03/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ar-android/DrawRouteMaps/1.0.0/181e8685d0fe248e5e514d4189a330c2ef86e1f6/DrawRouteMaps-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,236 @@
+﻿<resources>
+    <string name="app_name">Maxi</string>
+
+
+
+    
+   <string name="facebook_app_id" translatable="false">facebook_app_id</string>
+   <string name="fb_login_protocol_scheme" translatable="false">fb-facebook_app_id</string>
+   
+    
+   
+    <string name="google_api_client_id" translatable="false">debug_client_auth_id_from_google_api_console</string>
+    <string name="google_gmail_release" translatable="false">release_client_auth_id_from_google_api_console</string>
+    
+
+    
+   
+   <string name="google_map_realsekey" translatable="false">google_map_key_for_release_key</string>
+    <string name="google_map_debug" translatable="false">google_map_key_for_debug_key</string>
+
+
+    
+
+    
+    <string name="key_for_places" translatable="false">google_payed_api_key_for_search_places_and_drawroute</string>
+
+   
+
+    <string-array name="language_names_for_show">
+        <item>English</item>
+        <item>español</item>
+        <item>العربية</item>
+    </string-array>
+
+    <string-array name="language_names_for_api">
+        <item>english</item>
+        <item>spanish</item>
+        <item>arabic</item>
+    </string-array>
+
+    <string-array name="language_code">
+        <item>en</item>
+        <item>es</item>
+        <item>ar</item>
+    </string-array>
+
+    <string name="login">Iniciar Sesión</string>
+    <string name="sign_up">Registrarme</string>
+    <string name="sign_up_fb">REGISTRI CON FACEBOOK</string>
+    <string name="sign_up_google">REGISTRO CON GOOGLE</string>
+    <string name="change_password">Cambiar Contraseña</string>
+    <string name="verification">Verificación</string>
+    <string name="conformation_desc">Confirme su código de país e ingrese su número de teléfono</string>
+    <string name="confirm">Confirmar</string>
+    <string name="sms_desc">Le enviamos un código de acceso a través de sms para la verificación del número de teléfono</string>
+    <string name="enter_code">Ingrese el código</string>
+    <string name="history">Mis Mandados</string>
+    <string name="deals">Promociones</string>
+    <string name="account">Perfil</string>
+
+
+    <string name="default_notification_channel_id">channel-01</string>
+    <string name="select_payment_method">Seleccionar forma de pago</string>
+    <string name="add_payment_method">AGREGAR FORMA DE PAGO</string>
+    <string name="cash_on_delivery">PAGAR AL RECIBIR</string>
+    <string name="save">Guardar</string>
+    <string name="add_payment">Agregar forma de pago</string>
+    <string name="card_hint">Número de Tarjeta</string>
+    <string name="billing_address_hint">Dirección</string>
+    <string name="city_hint">Ciudad</string>
+    <string name="state_hint">Estado</string>
+    <string name="zip_hint">C.P.</string>
+    <string name="card_name_hint">Nombre del titular</string>
+    <string name="cvc_hint">CVV</string>
+    <string name="date_hint">Vencimiento (09/21)</string>
+    <string name="add_new_address">Agregar nueva dirección</string>
+    <string name="add_address">Agregar dirección de entrega</string>
+    <string name="house_hint">Calle</string>
+    <string name="add_loc">Ubicación</string>
+    <string name="inst_hint">Instrucciones del domicilio</string>
+
+
+    <string name="hello_ted">Hola</string>
+    <string name="order_now">PEDIR AHORA</string>
+    <string name="check_out">PAGAR</string>
+    <string name="show_restaurant">SOLICITAR MANDADO</string>
+    <string name="welcome_txt">¿Que mandado haremos hoy?</string>
+    <string name="edit_account">Editar Cuenta</string>
+    <string name="recover_pass">Recuperar Contraseña</string>
+    <string name="recover">Recuperar</string>
+
+
+    <string name="email_hint"><font size="14">usuario@gmail.com</font></string>
+    <string name="password_hint"><font size="14">6 caracteres</font></string>
+    <string name="f_name"><font size="14">Juan</font></string>
+    <string name="l_name"><font size="14">Gómez</font></string>
+    <string name="location">Ubicación</string>
+
+
+    <string name="deal_content">No hay información.</string>
+    <string name="privacy_policy">Aviso de Privacidad</string>
+    <string name="no_deal_text">No hay información.</string>
+    <string name="uan_txt">UAN (00 111 111 111)</string>
+    <string name="uan">00111111111</string>
+    <string name="rest_not_open">COMERCIO CERRADO.</string>
+    <string name="options">Opciones</string>
+    <string name="food_name">Producto</string>
+    <string name="food_description">Descripcion</string>
+    <string name="instructions">INSTRUCCIONES</string>
+    <string name="special_instruction_optional">Introduzca los requerimientos de su pedido (Sin cebolla por ejemplo)</string>
+    <string name="add_to_cart">Agregar</string>
+    <string name="hotel_name">Comercio</string>
+    <string name="location_address">Ubicación</string>
+    <string name="save_location">Guardar Ubicación</string>
+    <string name="email">Email</string>
+    <string name="code">Código</string>
+    <string name="send_code">Enviar Código</string>
+    <string name="new_password">Nueva contraseña</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="search">Buscar</string>
+    <string name="password">Contraseña</string>
+    <string name="last_name">Apellido</string>
+    <string name="first_name">Nombre</string>
+    <string name="old_password">Contraseña anterior</string>
+    <string name="change">Cambiar</string>
+    <string name="resend_code">Reenviar código?</string>
+    <string name="add_instructions">Agregar Instrucciones</string>
+    <string name="type_here">Introduzca aquí las instrucciones del pedido</string>
+    <string name="add_promo_code">Agregar código promocional</string>
+    <string name="enter_code_here">Ingrese el código</string>
+    <string name="pending_orders">Pedidos Pendientes</string>
+    <string name="accepted_orders">Aceptar Pedidos</string>
+    <string name="cancel">Cancelar</string>
+    <string name="whoops">Lo sentimos!</string>
+    <string name="desc_here">Desc Here</string>
+    <string name="select_delivery_address">A donde llevamos su pedido?</string>
+    <string name="delivery">A DOMICILIO</string>
+    <string name="pick_up">PASARE POR EL</string>
+    <string name="add_rider_tip">Agregar propina</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="tax">Impuestos</string>
+    <string name="delivery_fee">Envío</string>
+    <string name="total">Total</string>
+    <string name="cart">Carrito</string>
+    <string name="clear">Borrar</string>
+    <string name="select_delivery_time">Programar la entrega?</string>
+    <string name="discount">Descuento</string>
+    <string name="there_is_no_cart_data">No hay información.</string>
+    <string name="delivery_date_and_time">Fecha y hora de entrega</string>
+    <string name="select_delivery_date_and_time_to_ncontinue">Seleccione la fecha y hora para programar su pedido</string>
+    <string name="delivery_date">Cuando lo entregamos?</string>
+    <string name="edit_date">Editar Fecha</string>
+    <string name="delivery_time">A que hora lo entregamos?</string>
+    <string name="edit_time">Editar hora</string>
+    <string name="continue_txt">Continuar</string>
+    <string name="please_wait">Cargando...</string>
+    <string name="forgot_your_password">Olvido su contraseña?</string>
+    <string name="don_t_have_an_account">No tiene una cuenta?</string>
+    <string name="sign_up_now">Iniciar Sesión</string>
+    <string name="login_with_facebook">ACCESAR CON FACEBOOK</string>
+    <string name="login_with_google">ACCESAR CON GOOGLE</string>
+    <string name="title">Titulo</string>
+    <string name="some_instructions">Some Instructions</string>
+    <string name="order_detail">DETALLES DEL PEDIDO</string>
+    <string name="order_hotel_detail">DETALLES DEL COMERCIO</string>
+    <string name="address">Dirección</string>
+    <string name="phone">Teléfono</string>
+    <string name="order_user_detail">INFORMACIÓN DEL CLIENTE</string>
+    <string name="user_name">Nombre</string>
+    <string name="order_payment_details">DETALLES DEL PAGO</string>
+    <string name="rider_tip">Propina del Repartidor</string>
+    <string name="payment_method">Método de Pago</string>
+    <string name="credit_card">Tarjeta de Crédito</string>
+    <string name="track_order">RASTREAR MI MANDADO</string>
+    <string name="accept">Aceptar</string>
+    <string name="decline">Rechazar</string>
+    <string name="type_review_optional">Type Review (Optional)</string>
+    <string name="submit">Enviar</string>
+    <string name="suggestions">Sugerencias</string>
+    <string name="search_restaurant">Buscar Comercio</string>
+    <string name="reviews">Opiniones</string>
+    <string name="no_reviews_found_for_this_restaurant">Aún no tiene opiniones</string>
+    <string name="weekly_earning">Ganancia Semanal</string>
+    <string name="track_now">RASTREAR</string>
+    <string name="search_country">Buscar País</string>
+    <string name="favorites">Favoritos</string>
+    <string name="let_us_know_where_are_you_so_we_can_recommend_nearby_events">Dónde se encuentra para que podamos recomendar comercios cercanos.</string>
+    <string name="your_location_here">Mi ubicación</string>
+    <string name="sign_in">Iniciar Sesión</string>
+    <string name="terms_of_use_and_privacy_policy">Terms of Use and Privacy Policy</string>
+    <string name="change_your_account_information">Cambiar Información</string>
+    <string name="add_or_edit_payment_method">Agregar o Editar forma de pago</string>
+    <string name="delivery_address">Dirección de entrega</string>
+    <string name="add_or_edit_delivery_address">Agregar o editar la dirección de entrega</string>
+    <string name="other">OTRO</string>
+    <string name="log_out">Salir</string>
+    <string name="not_be_empty">No puede estar vacio</string>
+    <string name="select_the_card_validity">Seleccione la validez de la tarjeta</string>
+    <string name="done">Listo</string>
+    <string name="restuarents">Inicio</string>
+    <string name="orders">Mandados</string>
+    <string name="accounts">Perfil</string>
+    <string name="select_speciality">Seleccionar especialidad</string>
+    <string name="search_restaurant_speciality">Buscar especialidad de restaurante</string>
+    <string name="enter_tip_here">Agregar una propina</string>
+    <string name="please_enter_the_ammount">Ingrese el monto</string>
+    <string name="please_enter_the_promocode">Ingrese el código promocional</string>
+    <string name="coupon_already_been_added">Cupón ya agregado</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="call_us">Llámanos</string>
+    <string name="press_call_to_dial_our_uan_number">Presione llamar para marcar nuestro número</string>
+
+    <string name="language">Language</string>
+    <string name="delete_cart">Eliminar pedido?</string>
+    <string name="are_you_sure_to_delete_cart">Esta seguro de eliminar su pedido??</string>
+    <string name="discard">SI, eliminar</string>
+    <string name="thanks_for_review">Gracias por sus comentarios</string>
+    <string name="give_your_reviews">Denos un comentario</string>
+    <string name="search_restuarents_menu">Buscar menú de restaurante</string>
+    <string name="out_of_order">AGOTADO</string>
+    <string name="changing_restuarents">Cambio de restaurante</string>
+    <string name="whould_you_like_to_change_order">¿Le gustaría cambiar su pedido y comenzar un nuevo pedido?</string>
+    <string name="select_all_required_items">Seleccionar todos los elementos obligatorios</string>
+    <string name="order_filter">Filtro de pedidos</string>
+    <string name="current_orders">Pedidos en curso</string>
+    <string name="past_orders">Pedidos anteriores</string>
+
+
+    <string name="delivery_address_can_not_empty">La dirección de entrega no puede estar vacia.</string>
+    <string name="you_have_reached_your_free_delivery_order">Resumen de su pedido</string>
+    <string name="you_have_to_need_more">\"Necesita agregar otro producto \"</string>
+    <string name="for_free_delivery_order">\" para envío gratuito\"</string>
+    <string name="checkout">PAGAR</string>
+
+</resources>
