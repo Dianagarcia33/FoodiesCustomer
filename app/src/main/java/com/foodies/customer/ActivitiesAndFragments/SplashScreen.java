@@ -20,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -30,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.foodies.customer.Adapters.SliderPagerAdapter;
 import com.foodies.customer.BuildConfig;
 import com.foodies.customer.Constants.GpsUtils;
 import com.foodies.customer.Constants.PreferenceClass;
@@ -80,6 +84,8 @@ public class SplashScreen extends AppCompatActivity implements
     private static final int PERMISSION_DATA_ACCESS_CODE = 2;
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
+    private ViewPager pager;
+    private PagerAdapter pagerAdapter;
 
 
     @Override
@@ -122,6 +128,17 @@ public class SplashScreen extends AppCompatActivity implements
             }
 
             setContentView(R.layout.splash);
+
+            List<Fragment> list = new ArrayList<>();
+            list.add(new PagerFragments1());
+            list.add(new PagerFragments2());
+            list.add(new PagerFragments3());
+            list.add(new PagerFragments4());
+
+            pager = findViewById(R.id.pagerView);
+            pagerAdapter = new SliderPagerAdapter(getSupportFragmentManager(),list);
+
+            pager.setAdapter(pagerAdapter);
 
             VERSION_CODE = BuildConfig.VERSION_NAME;
 
@@ -169,7 +186,7 @@ public class SplashScreen extends AppCompatActivity implements
                 main_welcome_screen_layout.setVisibility(View.GONE);
                 main_splash_layout.setVisibility(View.VISIBLE);
 
-                new Handler().postDelayed(new Runnable() {
+  /*              new Handler().postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
@@ -192,7 +209,7 @@ public class SplashScreen extends AppCompatActivity implements
                         }
                     }
                 }, SPLASH_TIME_OUT);
-
+*/
             } else {
 
                 displayLocation();
