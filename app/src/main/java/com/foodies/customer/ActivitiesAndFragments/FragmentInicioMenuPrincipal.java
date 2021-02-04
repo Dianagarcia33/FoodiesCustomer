@@ -31,7 +31,7 @@ public class FragmentInicioMenuPrincipal extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar;
+    Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentPaquetes;
     FragmentTransaction fragmentTransaction;
     Button btnAdondeloLlevamos;
     Button btnQueComprar;
@@ -107,9 +107,9 @@ public class FragmentInicioMenuPrincipal extends Fragment {
         btnQueComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentQvacomprar = new FragmentMquevacomprar();
+                fragmentPaquetes = new FragmentPaquetes();
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contenedorFragment,fragmentQvacomprar).commit();
+                fragmentTransaction.replace(R.id.contenedorFragment,fragmentPaquetes).commit();
                 fragmentTransaction.addToBackStack(null);
             }
         });
