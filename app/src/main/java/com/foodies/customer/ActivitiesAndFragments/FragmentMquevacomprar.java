@@ -3,10 +3,12 @@ package com.foodies.customer.ActivitiesAndFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.foodies.customer.R;
 
@@ -25,6 +27,10 @@ public class FragmentMquevacomprar extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button buttonQueVacomprar;
+
+    Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentCart;
+    FragmentTransaction fragmentTransaction;
 
     public FragmentMquevacomprar() {
         // Required empty public constructor
@@ -61,6 +67,20 @@ public class FragmentMquevacomprar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mquevaacomprar, container, false);
+        View view = inflater.inflate(R.layout.fragment_mquevaacomprar, container, false);
+
+        buttonQueVacomprar = view.findViewById(R.id.btnQueVacomprar);
+
+        buttonQueVacomprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentCart = new CartFragment();
+                fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.contenedorFragment,fragmentCart).commit();
+                fragmentTransaction.addToBackStack(null);
+            }
+        });
+
+        return view;
     }
 }
