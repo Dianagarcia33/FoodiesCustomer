@@ -29,19 +29,25 @@
         tools:replace="allowBackup">
         <activity android:name=".ActivitiesAndFragments.SplashScreenIndex" android:theme="@style/SplashTheme">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
-        <activity android:name=".ActivitiesAndFragments.MainActivityMenuPrincipal" /> <!-- Splash screen -->
+        <activity android:name=".ActivitiesAndFragments.MainActivityMenuPrincipal" >
+
+        </activity>
+
+        <!-- Splash screen -->
         <activity
             android:name=".ActivitiesAndFragments.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 

@@ -146,7 +146,7 @@ public class SplashScreen extends AppCompatActivity implements
             welcome_show_restaurants_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    startActivity(new Intent(SplashScreen.this, SplashScreenIndex.class));
                     MapsActivity.SAVE_LOCATION = false;
                     finish();
                 }
