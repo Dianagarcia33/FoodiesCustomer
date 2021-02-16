@@ -246,5 +246,11 @@
 
     <string name="textPaquetes" translatable="false">Indicanos que debemos llevar por ti, nosotros iremos por el y lo entregaremos a donde nos indiques</string>
 
+    <string name="edittext_hintRef" translatable="false"><font size="8"> Ingrese Referencias</font></string>
+
+    <string name="textAdondelollevamos" translatable="false">Indicanos que tenemos que comprar, trata de ser lo mas especifico para asegurarnos que el lo que necesitas.</string>
+
+    <string name="edittext_hintPro" translatable="false"><font size="8"> Ingrese Referencias</font></string>
+
 
 </resources>

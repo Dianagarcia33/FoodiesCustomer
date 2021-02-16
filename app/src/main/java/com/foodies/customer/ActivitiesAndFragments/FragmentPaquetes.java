@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import com.foodies.customer.R;
 
@@ -30,7 +32,7 @@ public class FragmentPaquetes extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button btnPaquetes;
+    private RelativeLayout btnPaquetes;
 
     public FragmentPaquetes() {
         // Required empty public constructor
