@@ -233,4 +233,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
+    <string name="tituloIndex" translatable="false">¿Que necesitas que MAXI haga hoy por ti?</string>
+
+    <string name="necetas_que_compremos" translatable="false">Necesitas que compremos algo por ti</string>
+    <string name="text_btn1" translatable="false">¿Quieres que vayamos a comprar al súper a la tienda, o a otro comercio? nosotros iremos por ti y lo llevaremos a donde indiques </string>
+
+    <string name="tienes_que_ir" translatable="false">¿Tienes que ir por un paquete o enviar uno?</string>
+    <string name="text_btn2" translatable="false">¿Necesitas enviar o que vayamos por un paquete? nosotros lo hacemos por ti, desde un paquete chico hasta enviar varios paquetes grandes</string>
+
+    <string name="compra_seleccion" translatable="false">Compra de nuestra selección de comercios</string>
+    <string name="text_btn3" translatable="false">¿Tienes hambre y no sabes que pedir? pide desde nuestra lista de comercios que tenemos para ti, nosotros iremos y lo llevaremos a donde estes</string>
+
+    <string name="textPaquetes" translatable="false">Indicanos que debemos llevar por ti, nosotros iremos por el y lo entregaremos a donde nos indiques</string>
+
+
 </resources>

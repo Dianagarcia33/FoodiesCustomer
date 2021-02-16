@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/welcome_bg"
     tools:context=".ActivitiesAndFragments.FragmentInicioMenuPrincipal">
 
     <ScrollView
@@ -15,49 +16,175 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/frmbutton"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/menutx1"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:textColor="@color/standard_white"
+                    android:textSize="25dp"
+                    android:text="@string/tituloIndex"/>
 
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnAdondeLollevamos"
+            <LinearLayout
+                android:id="@+id/btnMenu1"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/btnmenu1">
+                android:layout_marginTop="5dp"
+                android:elevation="8dp"
+                android:outlineAmbientShadowColor="@color/colorPrimary"
+                android:background="@drawable/backinputs2">
 
-            </Button>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_deals_filled"/>
 
-            <Button
-                android:id="@+id/btnQueVacomprar"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="@string/necetas_que_compremos"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/text_btn1"
+                        android:padding="5dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_marginLeft="-25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_navigate_next_24"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnMenu2"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/btnmenu2">
+                android:layout_marginTop="5dp"
+                android:elevation="10dp"
+                android:outlineAmbientShadowColor="@color/colorPrimary"
+                android:background="@drawable/backinputs2">
 
-            </Button>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_deals_filled"/>
 
-            <Button
-                android:id="@+id/btnMenu"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="@string/tienes_que_ir"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/text_btn2"
+                        android:padding="5dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_marginLeft="-25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_navigate_next_24"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnMenu3"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/btnmenu3">
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:elevation="10dp"
+                android:outlineAmbientShadowColor="@color/colorPrimary"
+                android:background="@drawable/backinputs2">
 
-            </Button>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_deals_filled"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="@string/compra_con_nuestros_aliados"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/text_btn3"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_marginLeft="-25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_navigate_next_24"/>
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
@@ -65,12 +192,16 @@
 
 
     </ScrollView>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/menufot" />
+        android:background="#959494"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Somos tu mejor aliado."/>
+
 
 </RelativeLayout>

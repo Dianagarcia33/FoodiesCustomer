@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.foodies.customer.Constants.PreferenceClass;
 import com.foodies.customer.R;
@@ -33,9 +34,9 @@ public class FragmentInicioMenuPrincipal extends Fragment {
 
     Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentPaquetes;
     FragmentTransaction fragmentTransaction;
-    Button btnAdondeloLlevamos;
-    Button btnQueComprar;
-    Button btnMenu;
+    LinearLayout btnAdondeloLlevamos;
+    LinearLayout btnQueComprar;
+    LinearLayout btnMenu;
 
     String getCurrentLocationAddress;
 
@@ -86,11 +87,11 @@ public class FragmentInicioMenuPrincipal extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio_menu_principal, container, false);
 
-        btnAdondeloLlevamos = view.findViewById(R.id.btnAdondeLollevamos);
+        btnAdondeloLlevamos = view.findViewById(R.id.btnMenu1);
 
-        btnQueComprar = view.findViewById(R.id.btnQueVacomprar);
+        btnQueComprar = view.findViewById(R.id.btnMenu2);
 
-        btnMenu = view.findViewById(R.id.btnMenu);
+        btnMenu = view.findViewById(R.id.btnMenu3);
 
         btnAdondeloLlevamos.setOnClickListener(new View.OnClickListener() {
             @Override

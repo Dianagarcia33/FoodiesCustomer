@@ -178,13 +178,13 @@ public class SplashScreen extends AppCompatActivity implements
                         boolean getLoINSession = sharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
 
                         if (!getLoINSession) {
-                            Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                            Intent i = new Intent(SplashScreen.this, MainActivityMenuPrincipal.class);
                             startActivity(i);
                             finish();
                         } else {
 
                             if (getUserType.equalsIgnoreCase("user")) {
-                                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                                Intent i = new Intent(SplashScreen.this, MainActivityMenuPrincipal.class);
                                 startActivity(i);
                                 finish();
                             }

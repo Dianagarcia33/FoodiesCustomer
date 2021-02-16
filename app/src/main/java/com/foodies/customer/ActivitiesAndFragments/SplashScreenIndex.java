@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -25,7 +26,6 @@ public class SplashScreenIndex extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     private LinearLayout mDotLayout;
     private Button btnNext;
-    private Button btnBack;
 
     private int mCurrent;
 
@@ -52,7 +52,6 @@ public class SplashScreenIndex extends AppCompatActivity {
         pager = findViewById(R.id.pagerView);
         mDotLayout = findViewById(R.id.dotsLayout);
 
-        btnBack = findViewById(R.id.back);
         btnNext = findViewById(R.id.next);
 
         pagerAdapter = new SliderPagerAdapter(getSupportFragmentManager(),list);
@@ -67,18 +66,13 @@ public class SplashScreenIndex extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pager.setCurrentItem(mCurrent +1);
-                Log.i("TAG", String.valueOf(mCurrent));
+                Intent i = new Intent(getApplicationContext(), MainActivityMenuPrincipal.class);
+
+                startActivity(i);
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pager.setCurrentItem(mCurrent -1);
-                Log.i("TAG", String.valueOf(mCurrent));
-            }
-        });
+
     }
 
     public  void addDotsIndicator(int position){
@@ -111,26 +105,19 @@ public class SplashScreenIndex extends AppCompatActivity {
             mCurrent = i;
 
             if (i == 0){
-                btnBack.setEnabled(true);
                 btnNext.setEnabled(false);
-                btnBack.setVisibility(View.INVISIBLE);
+                btnNext.setVisibility(View.INVISIBLE);
 
                 btnNext.setText("Siguiente");
-                btnBack.setText("");
             }else if(i == mDots.length -1){
-                btnBack.setEnabled(true);
                 btnNext.setEnabled(true);
-                btnBack.setVisibility(View.VISIBLE);
-
-                btnNext.setText("Continuar");
-                btnBack.setText("Anterior");
-            }else{
-                btnBack.setEnabled(true);
-                btnNext.setEnabled(true);
-                btnBack.setVisibility(View.VISIBLE);
+                btnNext.setVisibility(View.VISIBLE);
 
                 btnNext.setText("Siguiente");
-                btnBack.setText("Anterior");
+            }else{
+                btnNext.setEnabled(true);
+                btnNext.setVisibility(View.INVISIBLE);
+                btnNext.setText("Siguiente");
             }
 
         }
