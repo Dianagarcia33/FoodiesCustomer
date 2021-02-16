@@ -3,6 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/slidermaxisliders2">
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/llevamos_tus_paquetes"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_marginTop="40dp"
+        android:layout_margin="40dp"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_gravity="center"
+        android:layout_height="250dp"
+        android:background="@drawable/backinputs"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/text_pager2"/>
 
 </LinearLayout>

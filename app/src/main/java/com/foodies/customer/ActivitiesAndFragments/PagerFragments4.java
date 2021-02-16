@@ -22,15 +22,6 @@ public class PagerFragments4 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = (ViewGroup)inflater.inflate(R.layout.page_4,container,false);
 
-        btnNext = rootView.findViewById(R.id.btn_next_slider);
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), MainActivityMenuPrincipal.class);
-                startActivity(i);
-            }
-        });
 
         return rootView;
     }

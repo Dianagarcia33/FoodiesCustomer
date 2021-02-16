@@ -20,4 +20,5 @@
     <color name="img_bg">#EBEBEB</color>
     <color name="transparent_tint">#47000000</color>
     <color name="light_blue">#FFB330</color>
+    <color name="colorTransparentWhite">#cccccc</color>
 </resources>
