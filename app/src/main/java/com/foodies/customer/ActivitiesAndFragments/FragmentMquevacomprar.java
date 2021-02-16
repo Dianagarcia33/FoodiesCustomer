@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.foodies.customer.R;
 
@@ -27,7 +28,7 @@ public class FragmentMquevacomprar extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button buttonQueVacomprar;
+    private RelativeLayout buttonQueVacomprar;
 
     Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentCart;
     FragmentTransaction fragmentTransaction;
