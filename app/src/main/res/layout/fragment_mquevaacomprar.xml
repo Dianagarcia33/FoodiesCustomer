@@ -40,7 +40,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edittext_hintRef"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                    android:hint="@string/ingresa_direccion"
                     android:gravity="top"
                     android:layout_margin="5dp"
                     android:padding="2dp"
@@ -49,6 +50,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_baseline_home_24"
                     android:hint="@string/edittext_hintRef"
                     android:gravity="top"
                     android:layout_margin="5dp"
@@ -59,7 +61,7 @@
 
             <EditText
                 android:layout_marginTop="10dp"
-                android:hint="Instrucciones adicionales"
+                android:hint="@string/instrucciones_adicionales"
                 android:background="#eeeeee"
                 android:layout_margin="5dp"
                 android:padding="5dp"
@@ -67,18 +69,13 @@
                 android:gravity="top"
                 android:layout_height="200dp"/>
 
-
-
-
-
-
         </LinearLayout>
 
     </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:background="@drawable/round_shape_btn_login"
         android:id="@+id/btnQueVacomprar"
         android:layout_margin="10dp"
@@ -94,16 +91,7 @@
             android:id="@+id/cart_btn_text"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/grand_total_price_tv"
-            android:textColor="@color/colorWhite"
-            />
+
 
     </RelativeLayout>
 
