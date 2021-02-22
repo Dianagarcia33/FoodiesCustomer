@@ -1,7 +1,13 @@
 package com.foodies.customer.ActivitiesAndFragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,10 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.foodies.customer.Constants.GpsUtils;
+import com.foodies.customer.GoogleMapWork.MapsActivity;
 import com.foodies.customer.R;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +44,10 @@ public class FragmentPaquetes extends Fragment {
     private String mParam1;
     private String mParam2;
     private RelativeLayout btnPaquetes;
+    private EditText textSeleccionarTxt1;
 
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int PERMISSION_DATA_ACCESS_CODE = 2;
     public FragmentPaquetes() {
         // Required empty public constructor
     }
@@ -71,6 +85,17 @@ public class FragmentPaquetes extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_paquetes, container, false);
 
+
+        textSeleccionarTxt1 = view.findViewById(R.id.selccionarMadondeVamos);
+
+        textSeleccionarTxt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), MapsActivity.class);
+                startActivityForResult(i, PERMISSION_DATA_ACCESS_CODE);
+            }
+        });
+
         btnPaquetes = view.findViewById(R.id.btnPaquetes);
 
         btnPaquetes.setOnClickListener(new View.OnClickListener() {
@@ -85,4 +110,9 @@ public class FragmentPaquetes extends Fragment {
 
         return view;
     }
+
+
+
+
+
 }

@@ -648,7 +648,7 @@ public class CartFragment extends RootFragment implements View.OnClickListener{
                                    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
                                        CartFragParentModel item = (CartFragParentModel) listDataHeader.get(groupPosition);
-                                       key = item.getItem_key();
+                                       key  = item.getItem_key();
                                        customDialogbox();
                                        return true;
                                    }

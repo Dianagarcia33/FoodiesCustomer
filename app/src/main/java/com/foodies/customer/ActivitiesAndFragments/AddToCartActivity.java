@@ -175,7 +175,6 @@ public class AddToCartActivity extends AppCompatActivity {
 
         min_order_price = rest_model.min_order_price;
 
-
         res_fee = "0";
         inst_text = findViewById(R.id.inst_text);
         Random r = new Random();

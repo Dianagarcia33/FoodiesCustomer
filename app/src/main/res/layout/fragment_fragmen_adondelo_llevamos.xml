@@ -6,6 +6,7 @@
     tools:context=".ActivitiesAndFragments.FragmentAdondeloLlevamos">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -13,7 +14,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_margin="10dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,6 +45,7 @@
 
 
                 <EditText
+                    android:id="@+id/editTextNproducto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/edittext_hintPro"
@@ -55,6 +57,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/editTextDproducto"
                 android:layout_marginTop="10dp"
                 android:hint="@string/instrucciones_adicionales"
                 android:background="#eeeeee"
@@ -65,9 +68,19 @@
                 android:layout_height="200dp"/>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/btnNproducto"
                 android:layout_width="wrap_content"
                 android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:orientation="horizontal">
 
                 <TextView
@@ -86,9 +99,65 @@
                     android:text="+"/>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnEditarProducto"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="right"
+                android:visibility="invisible"
+                android:clickable="true"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:text="Editar producto"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#f9b235"
+                    android:textSize="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="+"/>
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+
     </LinearLayout>
 
     </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/selected_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAdondeLollevamos"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:minHeight="25dp"
+    />
+<!--
+    <com.foodies.customer.Utils.CustomExpandableListView
+        android:id="@+id/selected_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAdondeLollevamos"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:minHeight="25dp">
+
+    </com.foodies.customer.Utils.CustomExpandableListView>-->
+
 
     <RelativeLayout
         android:layout_width="match_parent"

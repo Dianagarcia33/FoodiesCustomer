@@ -19,6 +19,8 @@ public class AllConstants {
     public static final String CALCULATION = "CalculationAndroid";
     public static final String TRACKING = "tracking";
 
+    public static final String PACKAGES = "packages";
+
 
     public static SimpleDateFormat df =
             new SimpleDateFormat("dd-MM-yyyy HH:mm:ssZZ", Locale.ENGLISH);

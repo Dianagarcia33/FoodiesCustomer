@@ -254,5 +254,6 @@
     <string name="instrucciones_adicionales" translatable="false"><font size="8">Instrucciones adicionales</font></string>
 
     <string name="ingresa_direccion" translatable="false"><font size="8">Ingresa la direccion </font></string>
+    <string name="mName">mName</string>
 
 </resources>

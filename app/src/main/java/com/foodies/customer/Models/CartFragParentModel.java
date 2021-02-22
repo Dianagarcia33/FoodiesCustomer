@@ -42,6 +42,15 @@ public class CartFragParentModel {
     String item_quantity;
     String item_symbol;
     String item_price;
+    String item_description;
+
+    public String getItem_description() {
+        return item_description;
+    }
+
+    public void setItem_description(String item_description) {
+        this.item_description = item_description;
+    }
 
     public String getItem_key() {
         return item_key;
