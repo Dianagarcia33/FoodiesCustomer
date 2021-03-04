@@ -371,6 +371,7 @@ public class CartFragment extends RootFragment implements View.OnClickListener{
                             }
                         }
                     });
+
                     FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                     Bundle bundle=new Bundle();
                     bundle.putString("grand_total",grandTotal);

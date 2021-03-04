@@ -386,7 +386,7 @@ public class LoginAcitvity extends RootFragment implements View.OnClickListener,
                         editor.putString(PreferenceClass.USER_TYPE,resultObj2.optString("role"));
                         editor.commit();
 
-                            startActivity(new Intent(getContext(), MainActivity.class));
+                            startActivity(new Intent(getContext(), MainActivityMenuPrincipal.class));
                             getActivity().finish();
 
 

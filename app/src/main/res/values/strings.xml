@@ -35,8 +35,8 @@
         <item>ar</item>
     </string-array>
 
-    <string name="login">Iniciar Sesión</string>
-    <string name="sign_up">Registrarme</string>
+    <string name="login" translatable="false">Iniciar Sesión</string>
+    <string name="sign_up" translatable="false">Registrarme</string>
     <string name="sign_up_fb">REGISTRI CON FACEBOOK</string>
     <string name="sign_up_google">REGISTRO CON GOOGLE</string>
     <string name="change_password">Cambiar Contraseña</string>
@@ -125,6 +125,7 @@
     <string name="whoops">Lo sentimos!</string>
     <string name="desc_here">Desc Here</string>
     <string name="select_delivery_address">A donde llevamos su pedido?</string>
+    <string name="select_delivery_address_c" translatable="false">A donde vamos por su pedido?</string>
     <string name="delivery">A DOMICILIO</string>
     <string name="pick_up">PASARE POR EL</string>
     <string name="add_rider_tip">Agregar propina</string>
@@ -254,6 +255,12 @@
     <string name="instrucciones_adicionales" translatable="false"><font size="8">Instrucciones adicionales</font></string>
 
     <string name="ingresa_direccion" translatable="false"><font size="8">Ingresa la direccion </font></string>
-    <string name="mName">mName</string>
+
+    <string name="cantidad" translatable="false"><font size="8">Cantidad</font></string>
+    <string name="valorAprox" translatable="false"><font size="8">Valor Aproximado</font></string>
+    <string name="valorAproxTotal" translatable="false"><font size="8">Valor Total Aproximado</font></string>
+    <string name="valorAproxTotalCompra" translatable="false"><font size="8">Valor Total Aproximado Compra</font></string>
+
+    <string name="mName" translatable="false">mName</string>
 
 </resources>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".ActivitiesAndFragments.FragmentAdondeloLlevamos">
 
     <ScrollView
@@ -67,119 +68,207 @@
                 android:gravity="top"
                 android:layout_height="200dp"/>
 
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/backinputs"
+                android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/cantidad"
+                    android:drawableLeft="@drawable/ic_baseline_grid_3x3_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cantidad"
+                    android:inputType="number"
+                    android:gravity="top"
+                    android:layout_margin="5dp"
+                    android:padding="2dp"
+                    android:background="@drawable/backinputs3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/backinputs"
+                android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/valorApox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/valorAprox"
+                    android:inputType="number"
+                    android:gravity="top"
+                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                    android:layout_margin="5dp"
+                    android:padding="2dp"
+                    android:background="@drawable/backinputs3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/backinputs"
+                android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/valorTotalAprox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/valorAproxTotal"
+                    android:enabled="false"
+                    android:gravity="top"
+                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                    android:layout_margin="5dp"
+                    android:padding="2dp"
+                    android:background="@drawable/backinputs3" />
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/btnNproducto"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:layout_marginRight="20dp"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_margin="5dp"
-                    android:text="Añadir producto"
-                    android:textStyle="bold"
+                <LinearLayout
+                    android:id="@+id/btnNproducto"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="#f9b235"
-                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:text="+"/>
+                    android:layout_gravity="left"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:text="Añadir producto"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:id="@+id/btnEditarProducto"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="right"
-                android:visibility="invisible"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#f9b235"
+                        android:textSize="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="+"/>
 
-                <TextView
-                    android:layout_margin="5dp"
-                    android:text="Editar producto"
-                    android:textStyle="bold"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnEditarProducto"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="#f9b235"
-                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="right"
+                    android:visibility="invisible"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:text="+"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:text="Editar producto"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#f9b235"
+                        android:textSize="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="+"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selected_item_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btnAdondeLollevamos"
+                android:layout_below="@+id/scrollView"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:minHeight="25dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/backinputs"
+                android:orientation="vertical">
+
+
+
+                <EditText
+                    android:id="@+id/valorAproxTotalCompra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/valorAproxTotalCompra"
+                    android:inputType="number"
+                    android:enabled="false"
+                    android:gravity="top"
+                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                    android:layout_margin="5dp"
+                    android:padding="2dp"
+                    android:background="@drawable/backinputs3" />
+
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/valorAproxTotalCompra"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/round_shape_btn_login"
+                android:id="@+id/btnAdondeLollevamos"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Siguiente"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorWhite"
+                    android:id="@+id/cart_btn_text"
+                    />
+
+
+
+            </RelativeLayout>
 
     </LinearLayout>
 
     </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selected_item_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAdondeLollevamos"
-        android:layout_below="@+id/scrollView"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:minHeight="25dp"
-    />
-<!--
-    <com.foodies.customer.Utils.CustomExpandableListView
-        android:id="@+id/selected_item_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAdondeLollevamos"
-        android:layout_below="@+id/scrollView"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:minHeight="25dp">
 
-    </com.foodies.customer.Utils.CustomExpandableListView>-->
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/round_shape_btn_login"
-        android:id="@+id/btnAdondeLollevamos"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="0dp"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Siguiente"
-            android:layout_centerInParent="true"
-            android:textColor="@color/colorWhite"
-            android:id="@+id/cart_btn_text"
-            />
-
-
-
-    </RelativeLayout>
 
 
 

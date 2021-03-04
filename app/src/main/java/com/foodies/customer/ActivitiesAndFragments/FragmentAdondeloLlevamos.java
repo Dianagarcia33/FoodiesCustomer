@@ -13,6 +13,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,7 +86,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
     private  String userId,key_,name_,desc,price_,symbol,res_id,res_name,res_tax,res_fee;
 
     private static  String key;
-    private EditText producto,referenciasProducto,descripcion;
+    private EditText producto,referenciasProducto,descripcion,cantidad,valorAprox,valorAproxTotal,valorTotalCompra;
 
     ArrayList<CartFragParentModel> listDataHeader;
     DatabaseReference mDatabase;
@@ -99,7 +102,11 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
     private LinearLayout btnNproducto,btnEditarProducto;
 
-    String grandTotal_ = "0";
+    int grandTotal_ = 0;
+
+    String valorIngresado;
+    String cantidadIngresada;
+    int totalValorAprox;
 
     public FragmentAdondeloLlevamos() {
         // Required empty public constructor
@@ -153,9 +160,14 @@ public class FragmentAdondeloLlevamos extends Fragment {
         producto = view.findViewById(R.id.editTextNproducto);
         descripcion = view.findViewById(R.id.editTextDproducto);
 
+        cantidad = view.findViewById(R.id.cantidad);
+        valorAprox = view.findViewById(R.id.valorApox);
+        valorAproxTotal = view.findViewById(R.id.valorTotalAprox);
+        valorTotalCompra = view.findViewById(R.id.valorAproxTotalCompra);
 
         selected_item_list = view.findViewById(R.id.selected_item_list);
         mDatabase.keepSynced(true);
+
 
         loadProductos();
 
@@ -176,27 +188,30 @@ public class FragmentAdondeloLlevamos extends Fragment {
                         if (dataSnapshot.exists()){
 
                             if(UPDATE_NODE){
-                                mDatabase.child(key_).setValue(new CalculationModelProducto(user_id,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(key_).setValue(new CalculationModelProducto(user_id,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                             else {
                                 userId = mDatabase.push().getKey();
-                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                         }
                         else {
 
                             if(UPDATE_NODE){
-                                mDatabase.child(key_).setValue(new CalculationModelProducto(userId,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(key_).setValue(new CalculationModelProducto(user_id,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                             else {
                                 userId = mDatabase.push().getKey();
-                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                         }
                         loadProductos();
                         producto.setText("");
                         descripcion.setText("");
-                        Toast.makeText(getContext(),"Producto Registrado",Toast.LENGTH_SHORT);
+                        cantidad.setText("");
+                        valorAprox.setText("");
+                        valorAproxTotal.setText("");
+                        Toast.makeText(getContext(),"Producto Registrado",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -215,9 +230,9 @@ public class FragmentAdondeloLlevamos extends Fragment {
         buttonSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentQvacomprar = new FragmentMquevacomprar();
+                fragmentQvacomprar = new CartFragmentProductos();
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contenedorFragment,fragmentQvacomprar).commit();
+                fragmentTransaction.add(R.id.contenedorFragment,fragmentQvacomprar).commit();
                 fragmentTransaction.addToBackStack(null);
             }
         });
@@ -236,21 +251,21 @@ public class FragmentAdondeloLlevamos extends Fragment {
                         if (dataSnapshot.exists()){
 
                             if(UPDATE_NODE){
-                                mDatabase.child(key).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(key).setValue(new CalculationModelProducto(user_id,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                             else {
                                 userId = mDatabase.push().getKey();
-                                mDatabase.child(userId).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(user_id).setValue(new CalculationModelProducto(user_id,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                         }
                         else {
 
                             if(UPDATE_NODE){
-                                mDatabase.child(key).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(key).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                             else {
                                 userId = mDatabase.push().getKey();
-                                mDatabase.child(userId).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString()));
+                                mDatabase.child(user_id).setValue(new CalculationModelProducto(key,producto.getText().toString(),descripcion.getText().toString(),"$",valorAprox.getText().toString(),cantidad.getText().toString(),valorAproxTotal.getText().toString()));
                             }
                         }
                         loadProductos();
@@ -268,6 +283,84 @@ public class FragmentAdondeloLlevamos extends Fragment {
                 });
 
 
+            }
+        });
+
+        cantidad.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+                    if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+
+
+                        int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                        valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+                    if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+
+
+                        int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                        valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+                    if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+
+
+                        int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                        valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
+
+
+            }
+        });
+
+        valorAprox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+                    if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+
+
+                        int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                        valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+                        if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+
+                            int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                            valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                    if (!TextUtils.isEmpty(cantidad.getText().toString())) {
+                        if(!TextUtils.isEmpty(valorAprox.getText().toString())){
+
+
+                            int total = Integer.parseInt(valorAprox.getText().toString())*Integer.parseInt(cantidad.getText().toString());
+                            valorAproxTotal.setText(String.valueOf(total));
+                    }
+                }
             }
         });
 
@@ -311,6 +404,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
             public void onClick(View view) {
 
                 deleteSelectedNode(key);
+                loadProductos();
                 dialog.dismiss();
 
             }
@@ -331,12 +425,13 @@ public class FragmentAdondeloLlevamos extends Fragment {
     public void deleteSelectedNode(final String key){
 
         final DatabaseReference deleteNode = mDatabase.child(key);
+        Log.d(AllConstants.tag, deleteNode.toString());
 
         Log.d(AllConstants.tag, key.toString());
 
         deleteNode.removeValue();
 
-        loadProductos();
+
 
     }
 
@@ -361,7 +456,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
                         try {
                             jsonArray = new JSONArray(values);
-                            grandTotal_= "0";
+                            grandTotal_= 0;
                             listDataHeader = new ArrayList<>();
                             for (int a = 0; a < jsonArray.length(); a++) {
 
@@ -376,6 +471,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                                 cartFragParentModel.setItem_name(allJsonObject.optString("mName"));
                                 cartFragParentModel.setItem_description(allJsonObject.optString("description"));
 
+                                grandTotal_ += Integer.parseInt(allJsonObject.optString("mPriceT"));
 
                                 listDataHeader.add(cartFragParentModel);
 
@@ -401,7 +497,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                                 selected_item_list.setAdapter(cartFragExpandable);
 
                                 buttonSiguiente.setEnabled(true);
-
+                                valorTotalCompra.setText(String.valueOf(grandTotal_));
                              }
 
                         } catch (JSONException e) {
@@ -453,6 +549,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
 
     }
+
 
 
 }

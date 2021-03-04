@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:id="@+id/cart_main_containerP"
     tools:context=".ActivitiesAndFragments.CartFragmentProductos">
 
 
@@ -58,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="@string/options"
+                android:text="Estos son los productos que compraremos por tu"
                 android:layout_marginStart="15dp"
                 android:textSize="10sp"
                 android:id="@+id/rest_name_tv"
@@ -101,13 +103,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.foodies.customer.Utils.CustomExpandableListView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/selected_item_list_c"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/selected_item_list"
-                    android:minHeight="25dp">
-
-                </com.foodies.customer.Utils.CustomExpandableListView>
+                    />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -140,6 +140,85 @@
 
 
                 </RelativeLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/backinputs"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                        android:hint="@string/ingresa_direccion"
+                        android:gravity="top"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/backinputs3"
+                        android:id="@+id/cart_address_divP">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_baseline_location_on_24"
+                            android:layout_marginEnd="15dp"
+                            android:layout_alignParentStart="true"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="25dp"
+                            android:text="@string/select_delivery_address"
+                            android:id="@+id/delivery_address_tvP"
+                            android:layout_toStartOf="@+id/rightArrow2"
+                            android:layout_alignParentStart="true"
+                            android:singleLine="true"
+                            />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="18dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/right_arrow"
+                            android:layout_marginEnd="15dp"
+                            android:id="@+id/rightArrow2"
+                            android:layout_alignParentEnd="true"/>
+
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:drawableLeft="@drawable/ic_baseline_home_24"
+                        android:hint="@string/edittext_hintRef"
+                        android:gravity="top"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@drawable/backinputs3" />
+
+                </LinearLayout>
+
+
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/instrucciones_adicionales"
+                    android:background="#eeeeee"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:gravity="top"
+                    android:layout_height="200dp"/>
+
+
+
 
 
                 <RelativeLayout
@@ -255,6 +334,7 @@
                             android:layout_height="40dp"
                             android:background="@drawable/round_shape_btn_grey"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_marginStart="3dp"
                             android:layout_gravity="center_vertical"
                             android:id="@+id/decline_div">

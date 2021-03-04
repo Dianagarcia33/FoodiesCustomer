@@ -98,7 +98,7 @@ public class FragmentInicioMenuPrincipal extends Fragment {
             public void onClick(View v) {
                 fragmentAdondeloLlevamos = new FragmentAdondeloLlevamos();
                 fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contenedorFragment,fragmentAdondeloLlevamos).commit();
+                fragmentTransaction.add(R.id.contenedorFragment,fragmentAdondeloLlevamos).commit();
                 fragmentTransaction.addToBackStack(null);
 
             }
