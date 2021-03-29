@@ -104,7 +104,7 @@ public class FragmentMquevacomprar extends Fragment {
         buttonQueVacomprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentCart = new CartFragmentProductos();
+                fragmentCart = new CartFragmentPaquetes();
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.contenedorFragment,fragmentCart).commit();
                 fragmentTransaction.addToBackStack(null);

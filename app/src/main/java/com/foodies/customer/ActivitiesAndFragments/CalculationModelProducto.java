@@ -11,9 +11,9 @@ public class CalculationModelProducto implements Serializable {
     String mPrice;
     String mQuantity;
     String mPriceT;
+    int type;
 
-
-    public CalculationModelProducto(String key, String mName,String description,String mCurrency,String mPrice,String mQuantity,String mPriceT) {
+    public CalculationModelProducto(String key, String mName,String description,String mCurrency,String mPrice,String mQuantity,String mPriceT,int type) {
         this.description = description;
         this.key = key;
         this.mName = mName;
@@ -21,7 +21,16 @@ public class CalculationModelProducto implements Serializable {
         this.mPrice = mPrice;
         this.mQuantity = mQuantity;
         this.mPriceT = mPriceT;
+        this.type = type;
 
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getmPriceT() {

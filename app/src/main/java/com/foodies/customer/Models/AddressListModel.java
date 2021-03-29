@@ -65,4 +65,23 @@ public class AddressListModel implements Serializable {
     }
 
     String delivery_fee;
+
+    Double longCity;
+    Double latCity;
+
+    public Double getLongCity() {
+        return longCity;
+    }
+
+    public void setLongCity(Double longCity) {
+        this.longCity = longCity;
+    }
+
+    public Double getLatCity() {
+        return latCity;
+    }
+
+    public void setLatCity(Double latCity) {
+        this.latCity = latCity;
+    }
 }

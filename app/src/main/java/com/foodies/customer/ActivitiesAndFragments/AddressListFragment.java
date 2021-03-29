@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -204,8 +205,13 @@ public class AddressListFragment extends RootFragment {
 
                         for (int i=0;i<jsonarray.length();i++){
 
+
+
                             JSONObject addressJson = jsonarray.getJSONObject(i);
                             JSONObject jsonObjAdd = addressJson.getJSONObject("Address");
+
+                            Log.d("prueba",addressJson.toString());
+                            Log.d("prueba",jsonObjAdd.toString());
 
                             AddressListModel addressListModel = new AddressListModel();
 
@@ -233,6 +239,16 @@ public class AddressListFragment extends RootFragment {
                             }
                             else {
                                 addressListModel.setStreet(jsonObjAdd.optString("street"));
+                            }if(jsonObjAdd.optString("lat").isEmpty()){
+                                addressListModel.setLatCity(Double.valueOf(jsonObjAdd.optString("lat")));
+                            }
+                            else {
+                                addressListModel.setLatCity(Double.valueOf(jsonObjAdd.optString("lat")));
+                            }if(jsonObjAdd.optString("long").isEmpty()){
+                                addressListModel.setLongCity(Double.valueOf(jsonObjAdd.optString("long")));
+                            }
+                            else {
+                                addressListModel.setLongCity(Double.valueOf(jsonObjAdd.optString("long")));
                             }
                             addressListModel.setAddress_id(jsonObjAdd.optString("id"));
                             addressListModel.setDelivery_fee(jsonObjAdd.optString("delivery_fee"));
@@ -281,5 +297,8 @@ public class AddressListFragment extends RootFragment {
 
             }
         });
+
+
+
     }
 }

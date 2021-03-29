@@ -181,7 +181,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                 mDatabase.keepSynced(true);
                 FLAG_CART_ADD = false;
 
-                Query query = mDatabase;
+                Query query = mDatabase;/*
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -218,7 +218,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
+                });*/
 
 
 
@@ -230,7 +230,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
         buttonSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentQvacomprar = new CartFragmentProductos();
+                fragmentQvacomprar = new CartFragmentPaquetes();
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.contenedorFragment,fragmentQvacomprar).commit();
                 fragmentTransaction.addToBackStack(null);
@@ -245,7 +245,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                 FLAG_CART_ADD = false;
 
                 Query query = mDatabase;
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
+  /*              query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
@@ -282,7 +282,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
                     }
                 });
 
-
+*/
             }
         });
 

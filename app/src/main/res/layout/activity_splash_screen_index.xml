@@ -10,8 +10,7 @@
         android:id="@+id/pagerView"
         android:layout_width="match_parent"
         android:background="@drawable/welcome_bg"
-        android:layout_height="678dp" />
-
+        android:layout_height="wrap_content" />
 
 
     <LinearLayout
