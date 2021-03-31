@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ActivitiesAndFragments.FragmentPaquetes">
 
     <ScrollView
@@ -108,7 +108,38 @@
                 android:gravity="top"
                 android:layout_height="100dp"/>
 
+            <CheckBox
+                android:id="@+id/validacionDinero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="marca aqui si necesitas que llevemos dinero"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDinero"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/valorDinero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:drawableLeft="@drawable/ic_baseline_attach_money_24"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/textPaquetesDinero"/>
+
+
+            </LinearLayout>
         </LinearLayout>
+
+
+
 
     </ScrollView>
 

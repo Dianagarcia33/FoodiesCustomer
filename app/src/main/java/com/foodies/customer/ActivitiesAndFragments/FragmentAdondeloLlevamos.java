@@ -2,7 +2,6 @@ package com.foodies.customer.ActivitiesAndFragments;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -20,33 +19,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.foodies.customer.Adapters.AdapterRecyclerProductos;
-import com.foodies.customer.Adapters.CartFragExpandable;
 import com.foodies.customer.Constants.AllConstants;
 import com.foodies.customer.Constants.PreferenceClass;
-import com.foodies.customer.Models.CalculationModel;
 import com.foodies.customer.Models.CartFragChildModel;
 import com.foodies.customer.Models.CartFragParentModel;
-import com.foodies.customer.Models.RestaurantChildModel;
-import com.foodies.customer.Models.RestaurantsModel;
 import com.foodies.customer.R;
-import com.foodies.customer.Utils.CustomExpandableListView;
-import com.foodies.customer.Utils.TabLayoutUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +43,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.foodies.customer.ActivitiesAndFragments.CartFragment.UPDATE_NODE;
@@ -95,7 +82,6 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
     RecyclerView selected_item_list;
 
-    AdapterRecyclerProductos cartFragExpandable;
     private ArrayList<ArrayList<CartFragChildModel>> ListChild;
     Collection<Object> values;
     Map<String, Object> td;
@@ -477,7 +463,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
 
                             }
-
+/*
                             if (listDataHeader != null && listDataHeader.size() > 0) {
 
                                 Log.d(AllConstants.tag, listDataHeader.toString());
@@ -498,7 +484,7 @@ public class FragmentAdondeloLlevamos extends Fragment {
 
                                 buttonSiguiente.setEnabled(true);
                                 valorTotalCompra.setText(String.valueOf(grandTotal_));
-                             }
+                             }*/
 
                         } catch (JSONException e) {
                             e.printStackTrace();

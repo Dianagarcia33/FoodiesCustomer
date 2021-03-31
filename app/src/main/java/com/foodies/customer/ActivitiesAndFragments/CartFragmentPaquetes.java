@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import com.foodies.customer.Adapters.AdapterPager;
 import com.foodies.customer.Adapters.CartFragExpandable;
+import com.foodies.customer.Adapters.CartFragExpandablePack;
 import com.foodies.customer.Constants.AllConstants;
 import com.foodies.customer.Constants.ApiRequest;
 import com.foodies.customer.Constants.Callback;
@@ -52,7 +53,6 @@ import com.foodies.customer.R;
 import com.foodies.customer.Utils.CustomExpandableListView;
 import com.foodies.customer.Utils.TabLayoutUtils;
 import com.gmail.samehadar.iosdialog.CamomileSpinner;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +72,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +94,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
     private String payment_id,card_number;
     private String street,apartment,city,state,address_id;
 
-    CartFragExpandable cartFragExpandable;
+    CartFragExpandablePack cartFragExpandable;
     ArrayList<CartFragParentModel> listDataHeader;
     ArrayList<CartFragChildModel> listChildData;
     private ArrayList<ArrayList<CartFragChildModel>> ListChild;
@@ -678,6 +677,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
                                 cartFragParentModel.setItem_quantity(allJsonObject.optString("mQuantity"));
                                 cartFragParentModel.setItem_symbol(allJsonObject.optString("mCurrency"));
                                 cartFragParentModel.setItem_key(allJsonObject.optString("key"));
+                                cartFragParentModel.setItem_description(allJsonObject.optString("mDesc"));
 
                                 String total = allJsonObject.optString("grandTotal");
                                 minimumOrderPrice = allJsonObject.optString("minimumOrderPrice");
@@ -769,7 +769,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
                                 Calculate_Price();
 
-                                cartFragExpandable = new CartFragExpandable(getContext(), listDataHeader, ListChild);
+                                cartFragExpandable = new CartFragExpandablePack(getContext(), listDataHeader, ListChild);
                                 selected_item_list.setAdapter(cartFragExpandable);
 
                                 TabLayoutUtils.enableTabs(PagerMainActivity.tabLayout, true);
@@ -1290,11 +1290,8 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
         RelativeLayout cancelDiv = (RelativeLayout) dialog.findViewById(R.id.forth);
         RelativeLayout currentOrderDiv = (RelativeLayout) dialog.findViewById(R.id.second);
         RelativeLayout pastOrderDiv = (RelativeLayout) dialog.findViewById(R.id.third);
-        TextView first_tv = (TextView)dialog.findViewById(R.id.first_tv);
         TextView second_tv = (TextView)dialog.findViewById(R.id.second_tv);
         TextView third_tv = (TextView)dialog.findViewById(R.id.third_tv);
-        first_tv.setText(R.string.edit);
-        first_tv.setTextColor(ContextCompat.getColor(getContext(), R.color.colorFB));
         second_tv.setText(R.string.delete);
         second_tv.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
         third_tv.setTextColor(ContextCompat.getColor(getContext(), R.color.colorFB));
@@ -1302,7 +1299,6 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
         currentOrderDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editNode();
 
                 UPDATE_NODE = true;
 

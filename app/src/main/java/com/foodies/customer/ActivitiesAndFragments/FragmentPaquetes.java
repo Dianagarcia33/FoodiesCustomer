@@ -12,28 +12,44 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.foodies.customer.Adapters.CartFragExpandable;
 import com.foodies.customer.Constants.AllConstants;
 import com.foodies.customer.Constants.GpsUtils;
 import com.foodies.customer.Constants.PreferenceClass;
 import com.foodies.customer.GoogleMapWork.MapsActivity;
 import com.foodies.customer.Models.CalculationModel;
+import com.foodies.customer.Models.CartFragChildModel;
+import com.foodies.customer.Models.CartFragParentModel;
 import com.foodies.customer.R;
+import com.foodies.customer.Utils.TabLayoutUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static android.content.Context.LOCATION_SERVICE;
 import static com.foodies.customer.ActivitiesAndFragments.CartFragment.UPDATE_NODE;
@@ -61,7 +77,9 @@ public class FragmentPaquetes extends Fragment {
     FirebaseDatabase firebaseDatabase;
     EditText referencias,insAdicionales;
     public static boolean FLAG_CART_ADD;
-
+    CheckBox checkBoxValidacion;
+    LinearLayout linearLayoutCampos;
+    EditText valorDinero;
 
     DatabaseReference mDatabase;
 
@@ -126,6 +144,25 @@ public class FragmentPaquetes extends Fragment {
 
         btnPaquetes = view.findViewById(R.id.btnPaquetes);
 
+        checkBoxValidacion = view.findViewById(R.id.validacionDinero);
+
+        linearLayoutCampos = view.findViewById(R.id.linearLayoutDinero);
+
+        valorDinero = view.findViewById(R.id.valorDinero);
+
+        checkBoxValidacion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    linearLayoutCampos.setVisibility(View.VISIBLE);
+                }else{
+                    linearLayoutCampos.setVisibility(View.GONE);
+                }
+            }
+
+
+        });
+
         btnPaquetes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,13 +186,18 @@ public class FragmentPaquetes extends Fragment {
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if (valorDinero.getText().toString().matches("")){
+                            valorDinero.setText(0);
+                        }
+
                         if (dataSnapshot.exists()){
 
                             if(UPDATE_NODE){
 
                                mDatabase.child(key_).setValue(new CalculationModel(userId, "1",
-                                                    referencias.getText().toString(), "0", "0", "1", "0",
-                                                    "0", null, "1", "1", "Paqueteria", "$", "desc", "0", "0"));
+                                                    referencias.getText().toString(), valorDinero.getText().toString(), "0", "1", "0",
+                                                    "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
 
 
                         //        mDatabase.child(key_).setValue(new CalculationModelProducto(user_id, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
@@ -165,8 +207,8 @@ public class FragmentPaquetes extends Fragment {
 //                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
 
                                 mDatabase.child(userId).setValue(new CalculationModel(userId, "1",
-                                        referencias.getText().toString(), "0", "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", "desc", "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
+                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
 
                             }
                         }
@@ -175,8 +217,8 @@ public class FragmentPaquetes extends Fragment {
                             if(UPDATE_NODE){
                        //         mDatabase.child(key_).setValue(new CalculationModelProducto(user_id, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
                                 mDatabase.child(key_).setValue(new CalculationModel(user_id, "1",
-                                        referencias.getText().toString(), "0", "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", "desc", "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
+                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
 
 
 
@@ -186,8 +228,8 @@ public class FragmentPaquetes extends Fragment {
                                 //mDatabase.child(userId).setValue(new CalculationModelProducto(userId, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
 
                                 mDatabase.child(userId).setValue(new CalculationModel(userId, "1",
-                                        referencias.getText().toString(), "0", "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", "desc", "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
+                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
 
 
 
@@ -220,6 +262,7 @@ public class FragmentPaquetes extends Fragment {
 
         return view;
     }
+
 
 
 

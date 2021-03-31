@@ -1,5 +1,6 @@
 package com.foodies.customer.ActivitiesAndFragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,14 +8,35 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
+import com.foodies.customer.Adapters.CartFragExpandable;
+import com.foodies.customer.Constants.AllConstants;
 import com.foodies.customer.Constants.PreferenceClass;
+import com.foodies.customer.Models.CartFragChildModel;
+import com.foodies.customer.Models.CartFragParentModel;
 import com.foodies.customer.R;
+import com.foodies.customer.Utils.TabLayoutUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,13 +54,19 @@ public class FragmentInicioMenuPrincipal extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentPaquetes;
+    Fragment fragmentInicioPrincipal,fragmentAdondeloLlevamos,fragmentQvacomprar,fragmentPaquetes,fragCarPaquetes;
     FragmentTransaction fragmentTransaction;
     LinearLayout btnAdondeloLlevamos;
     LinearLayout btnQueComprar;
     LinearLayout btnMenu;
+    DatabaseReference mDatabase;
+    FirebaseDatabase firebaseDatabase;
+    SharedPreferences sPref;
+    boolean getLoINSession,PICK_UP;
 
-    String getCurrentLocationAddress;
+    Map<String, Object> td;
+    RelativeLayout transparent_layer,progressDialog;
+    String getCurrentLocationAddress,udid,user_id;
 
 
 
@@ -93,13 +121,24 @@ public class FragmentInicioMenuPrincipal extends Fragment {
 
         btnMenu = view.findViewById(R.id.btnMenu3);
 
+        sPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        udid = sPref.getString(PreferenceClass.UDID,"");//"9051e610ebcc1639";
+        getLoINSession = sPref.getBoolean(PreferenceClass.IS_LOGIN,false);
+        user_id = sPref.getString(PreferenceClass.pre_user_id,"");
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabase = firebaseDatabase.getReference().child(AllConstants.PACKAGES).child(udid);
+
         btnAdondeloLlevamos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 fragmentAdondeloLlevamos = new FragmentAdondeloLlevamos();
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.contenedorFragment,fragmentAdondeloLlevamos).commit();
                 fragmentTransaction.addToBackStack(null);
+
 
             }
         });
@@ -108,10 +147,52 @@ public class FragmentInicioMenuPrincipal extends Fragment {
         btnQueComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentPaquetes = new FragmentPaquetes();
-                fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.contenedorFragment,fragmentPaquetes).commit();
-                fragmentTransaction.addToBackStack(null);
+
+                mDatabase.keepSynced(true);
+
+                DatabaseReference query = mDatabase;
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if(dataSnapshot.exists()) {
+
+                            Log.d(AllConstants.tag, dataSnapshot.toString());
+
+                            td = (HashMap<String, Object>) dataSnapshot.getValue();
+                            Log.d("td", td.toString());
+
+                            if (td != null) {
+                                fragCarPaquetes = new CartFragmentPaquetes();
+                                fragmentTransaction = getFragmentManager().beginTransaction();
+                                fragmentTransaction.add(R.id.contenedorFragment,fragCarPaquetes).commit();
+                                fragmentTransaction.addToBackStack(null);
+                            } else {
+                                fragmentPaquetes = new FragmentPaquetes();
+                                fragmentTransaction = getFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.contenedorFragment,fragmentPaquetes).commit();
+                                fragmentTransaction.addToBackStack(null);
+                            }
+                        }
+                        else {
+                            fragmentPaquetes = new FragmentPaquetes();
+                            fragmentTransaction = getFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.contenedorFragment,fragmentPaquetes).commit();
+                            fragmentTransaction.addToBackStack(null);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        fragmentPaquetes = new FragmentPaquetes();
+                        fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.contenedorFragment,fragmentPaquetes).commit();
+                        fragmentTransaction.addToBackStack(null);
+                    }
+                });
+
+
             }
         });
 

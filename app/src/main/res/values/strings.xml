@@ -262,5 +262,5 @@
     <string name="valorAproxTotalCompra" translatable="false"><font size="8">Valor Total Aproximado Compra</font></string>
 
     <string name="mName" translatable="false">mName</string>
-
+    <string name="textPaquetesDinero" translatable="false">indicanos cuanto dinero necesitas que llevemos</string>
 </resources>
