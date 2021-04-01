@@ -581,11 +581,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
                 }
                 else {
-                    if (delivery_address_tv.getText().toString().equalsIgnoreCase(getString(R.string.select_delivery_address))) {
-                        Toast.makeText(getContext(), R.string.delivery_address_can_not_empty, Toast.LENGTH_LONG).show();
-                    } else {
                         placeOrder();
-                    }
                 }
                 break;
 
@@ -728,7 +724,8 @@ public void prueba(Float distanceR){
 
                             double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
 
-                            sub_total_price_tv.setText(String.valueOf(distanceR));
+                            sub_total_price_tv.setText(String.valueOf(69));
+
 
                         }
 
@@ -1241,7 +1238,7 @@ public void prueba(Float distanceR){
         try {
             jsonObject.put("user_id",user_id);
             jsonObject.put("price",total_sum);
-            jsonObject.put("sub_total",grandTotal);
+            jsonObject.put("sub_total",69);
             jsonObject.put("tax",tax_dues);
             jsonObject.put("quantity",mQuantity);
             if(delivery_address_tv.getText().toString().equalsIgnoreCase(getResources().getString(R.string.pick_up)))
@@ -1250,7 +1247,7 @@ public void prueba(Float distanceR){
             }else {
                 jsonObject.put("address_id", address_id);
             }
-            jsonObject.put("restaurant_id",res_id);
+            jsonObject.put("restaurant_id",1);
             jsonObject.put("instructions",instructions);
 
             jsonObject.put("coupon_id",coupon_id);
