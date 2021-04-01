@@ -728,7 +728,7 @@ public void prueba(Float distanceR){
 
                             double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
 
-                            sub_total_price_tv.setText(String.valueOf(subTotal));
+                            sub_total_price_tv.setText(String.valueOf(distanceR));
 
                         }
 
