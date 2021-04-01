@@ -51,24 +51,24 @@
 
                     <RadioButton
                         android:id="@+id/btnpq1"
-                        android:button="@drawable/ic_baseline_image_24"
-                        android:background="@drawable/selected_ratio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:button="@drawable/color_cursor_white"
+                        android:background="@drawable/icono1chico"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp" />
 
                     <RadioButton
                         android:id="@+id/btnpq2"
-                        android:button="@drawable/ic_baseline_image_24"
-                        android:background="@drawable/selected_ratio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:button="@drawable/color_cursor_white"
+                        android:background="@drawable/icono3chico"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"  />
 
                     <RadioButton
                         android:id="@+id/btnpq3"
-                        android:button="@drawable/ic_baseline_image_24"
-                        android:background="@drawable/selected_ratio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:button="@drawable/color_cursor_white"
+                        android:background="@drawable/icono2chico"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp" />
 
                 </RadioGroup>
 

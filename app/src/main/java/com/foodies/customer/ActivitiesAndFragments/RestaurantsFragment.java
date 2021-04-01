@@ -86,12 +86,7 @@ public class RestaurantsFragment extends RootFragment implements GoogleApiClient
     private static int currentPage = 0;
     private ArrayList<ImageSliderModel> ImagesArray;
     private ImageView res_filter;
-
-
     private TextView title_city_tv;
-
-
-
     private ArrayList<RestaurantsModel> datalist=new ArrayList<>();
     private RecyclerView restaurant_recycler_view;
     private RecyclerViewHeader recyclerHeader;
@@ -99,7 +94,6 @@ public class RestaurantsFragment extends RootFragment implements GoogleApiClient
 
     RecyclerView.LayoutManager recyclerViewlayoutManager;
     RestaurantsAdapter recyclerViewadapter;
-
     CamomileSpinner progressBar;
     String currentLoc;
     static SharedPreferences sharedPreferences;
