@@ -20,8 +20,8 @@ ImageView imageView;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = (ViewGroup)inflater.inflate(R.layout.page_2,container,false);
 
-        imageView = rootView.findViewById(R.id.imgpager1);
-        Picasso.with(getContext()).load(R.drawable.sliderjpg2).into(imageView);
+        imageView = rootView.findViewById(R.id.imgpager2);
+        Picasso.with(getContext()).load(R.drawable.slider2).into(imageView);
 
 
         return rootView;

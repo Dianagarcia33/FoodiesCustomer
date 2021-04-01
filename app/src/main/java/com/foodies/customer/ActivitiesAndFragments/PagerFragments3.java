@@ -20,7 +20,7 @@ public class PagerFragments3 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = (ViewGroup)inflater.inflate(R.layout.page_3,container,false);
 
-        imageView = rootView.findViewById(R.id.imgpager1);
+        imageView = rootView.findViewById(R.id.imgpager3);
         Picasso.with(getContext()).load(R.drawable.sliderjpg3).into(imageView);
 
         return rootView;
