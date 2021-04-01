@@ -17,10 +17,10 @@
         />
 
     <ImageView
+        android:id="@+id/imgpager1"
         android:layout_width="250dp"
         android:layout_gravity="center"
-        android:layout_height="250dp"
-        android:background="@drawable/sliderjpg1"/>
+        android:layout_height="250dp"/>
 
     <TextView
         android:layout_marginTop="20dp"
