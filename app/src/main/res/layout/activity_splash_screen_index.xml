@@ -9,7 +9,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerView"
         android:layout_width="match_parent"
-        android:background="@drawable/welcome_bg"
+        android:background="@drawable/color_cursor_white"
         android:layout_height="wrap_content" />
 
 

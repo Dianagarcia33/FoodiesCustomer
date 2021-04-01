@@ -21,8 +21,6 @@ public class PagerFragments4 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = (ViewGroup)inflater.inflate(R.layout.page_4,container,false);
-
-
         return rootView;
     }
 }
