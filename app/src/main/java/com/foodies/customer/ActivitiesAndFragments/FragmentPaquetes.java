@@ -187,8 +187,8 @@ public class FragmentPaquetes extends Fragment {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        if (valorDinero.getText().toString().matches("")){
-                            valorDinero.setText(0);
+                        if (valorDinero.getText().toString() == null){
+                            valorDinero.setText("0");
                         }
 
                         if (dataSnapshot.exists()){
