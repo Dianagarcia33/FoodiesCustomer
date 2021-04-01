@@ -25,7 +25,7 @@ public class PagerFragments4 extends Fragment {
         View rootView = (ViewGroup)inflater.inflate(R.layout.page_4,container,false);
 
         imageView = rootView.findViewById(R.id.imgpager4);
-        Picasso.with(getContext()).load(R.drawable.sliderjpg4).into(imageView);
+        Picasso.with(getContext()).load(R.drawable.slidermaxijpgmini).into(imageView);
 
         return rootView;
     }
