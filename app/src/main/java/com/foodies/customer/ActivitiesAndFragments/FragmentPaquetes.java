@@ -196,8 +196,8 @@ public class FragmentPaquetes extends Fragment {
                             if(UPDATE_NODE){
 
                                mDatabase.child(key_).setValue(new CalculationModel(userId, "1",
-                                                    referencias.getText().toString(), valorDinero.getText().toString(), "0", "1", "0",
-                                                    "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
+                                                    referencias.getText().toString(), valorDinero.getText().toString(), "0", String.valueOf(finalValidacionPq), "0",
+                                                    "0", null, "1", "1", "Paqueteria", "$", insAdicionales.getText().toString(), "0", "0"));
 
 
                         //        mDatabase.child(key_).setValue(new CalculationModelProducto(user_id, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
@@ -207,8 +207,8 @@ public class FragmentPaquetes extends Fragment {
 //                                mDatabase.child(userId).setValue(new CalculationModelProducto(userId, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
 
                                 mDatabase.child(userId).setValue(new CalculationModel(userId, "1",
-                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", String.valueOf(finalValidacionPq), "0",
+                                        "0", null, "1", "1", "Paqueteria", "$",insAdicionales.getText().toString(), "0", "0"));
 
                             }
                         }
@@ -217,8 +217,8 @@ public class FragmentPaquetes extends Fragment {
                             if(UPDATE_NODE){
                        //         mDatabase.child(key_).setValue(new CalculationModelProducto(user_id, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
                                 mDatabase.child(key_).setValue(new CalculationModel(user_id, "1",
-                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", String.valueOf(finalValidacionPq), "0",
+                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.getText().toString(), "0", "0"));
 
 
 
@@ -228,8 +228,8 @@ public class FragmentPaquetes extends Fragment {
                                 //mDatabase.child(userId).setValue(new CalculationModelProducto(userId, insAdicionales.getText().toString(),referencias.getText().toString(),"$","0","1","0",finalValidacionPq));
 
                                 mDatabase.child(userId).setValue(new CalculationModel(userId, "1",
-                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", "1", "0",
-                                        "0", null, "1", "1", "Paqueteria", "$", insAdicionales.toString(), "0", "0"));
+                                        referencias.getText().toString(),  valorDinero.getText().toString(), "0", String.valueOf(finalValidacionPq), "0",
+                                        "0", null, "1", "1", "Paqueteria", "$",insAdicionales.getText().toString(), "0", "0"));
 
 
 

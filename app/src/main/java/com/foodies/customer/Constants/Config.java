@@ -7,8 +7,8 @@ public class Config {
 
 
 
-   public static String baseURL = "http://maxi.armedia.host/mobileapp_api/api/";
-   public static String imgBaseURL = "http://maxi.armedia.host/mobileapp_api/";
+   public static String baseURL = "https://maxi.armedia.host/mobileapp_api/api/";
+   public static String imgBaseURL = "https://maxi.armedia.host/mobileapp_api/";
 
 
    

@@ -38,6 +38,7 @@ import android.widget.Toast;
 import com.foodies.customer.Adapters.AdapterPager;
 import com.foodies.customer.Adapters.CartFragExpandable;
 import com.foodies.customer.Adapters.CartFragExpandablePack;
+import com.foodies.customer.Adapters.DealsAdapter;
 import com.foodies.customer.Constants.AllConstants;
 import com.foodies.customer.Constants.ApiRequest;
 import com.foodies.customer.Constants.Callback;
@@ -47,6 +48,7 @@ import com.foodies.customer.Constants.PreferenceClass;
 import com.foodies.customer.Models.AddressListModel;
 import com.foodies.customer.Models.CartFragChildModel;
 import com.foodies.customer.Models.CartFragParentModel;
+import com.foodies.customer.Models.DealsModel;
 import com.foodies.customer.Models.RestaurantChildModel;
 import com.foodies.customer.Models.RestaurantsModel;
 import com.foodies.customer.R;
@@ -63,11 +65,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -110,6 +114,8 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
     private boolean FLAG_COUPON;
     boolean getLoINSession,PICK_UP;
     Double previousRiderTip = 0.0;
+
+    ArrayList<DealsModel> delsArrayList;
     private boolean isViewShown = false;
     LinearLayout mainCartDiv;
     JSONArray jsonArrayMenuExtraItem;
@@ -118,7 +124,9 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
     Location location = new Location("localizacion 1");
 
     Location location2 = new Location("localizacion 2");
-
+    Boolean valLocation1 = false;
+    Boolean valLocation2 = false;
+    SharedPreferences dealsSharedPreferences;
     RelativeLayout transparent_layer,progressDialog;
 
     public static boolean FLAG_CLEAR_ORDER;
@@ -172,7 +180,8 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cart_paquetes, container, false);
-
+        dealsSharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        context=getContext();
 
         if (!isViewShown) {
             initUI(view);
@@ -419,6 +428,9 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
 
                                 //   Calculate_Price();
+                                valLocation1 = true;
+
+
                                 calculateTax();
                             }
                         }
@@ -482,6 +494,8 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
                                 location2.setLongitude(addressListModel.getLongCity()); //longitud
 
                                 //   Calculate_Price();
+                                valLocation2 = true;
+
                                 calculateTax();
                             }
                         }
@@ -586,10 +600,17 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
     public void calculateTax(){
 
-        double distance = location.distanceTo(location2);
+        if (valLocation1){
+            if (valLocation2) {
+                float distance = location.distanceTo(location2);
+                Log.d("distancia", String.valueOf(distance));
 
 
-        Log.d("distancia", String.valueOf(distance));
+                prueba(distance);
+            }
+        }
+
+
 
     }
 
@@ -640,6 +661,97 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
     }
 
+
+public void prueba(Float distanceR){
+
+        //mQuantity
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd hh:mm:ss");
+    String currentDateandTime = sdf.format(new Date());
+    delsArrayList = new ArrayList<>();
+    String lat = dealsSharedPreferences.getString(PreferenceClass.LATITUDE,"");
+    String long_ = dealsSharedPreferences.getString(PreferenceClass.LONGITUDE,"");
+
+
+    JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("lat", lat);
+            jsonObject.put("long", long_);
+            jsonObject.put("current_time",currentDateandTime);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    ApiRequest.Call_Api(context, Config.SHOW_DEALS, jsonObject, new Callback() {
+        @Override
+        public void Responce(String resp) {
+
+            try {
+                JSONObject jsonResponse = new JSONObject(resp);
+
+                int code_id  = Integer.parseInt(jsonResponse.optString("code"));
+
+                if(code_id == 200) {
+
+                    JSONObject json = new JSONObject(jsonResponse.toString());
+                    JSONArray jsonarray = json.getJSONArray("msg");
+
+
+                    for (int i = 0; i < jsonarray.length(); i++) {
+
+                        Log.d("consultaDatos", jsonarray.getJSONObject(i).toString());
+
+                        JSONObject json1 = jsonarray.getJSONObject(i);
+                        JSONObject jsonObjRestaurant = json1.optJSONObject("Restaurant");
+                        JSONObject jsonObjTax = jsonObjRestaurant.optJSONObject("Tax");
+
+                        String taxPackage = null;
+
+                        if(jsonObjTax!=null) {
+
+                            if(mQuantity.matches("1")){
+                                taxPackage = jsonObjTax.optString("tax_pack_s");
+                            }else if(mQuantity.matches("2")){
+                                taxPackage = jsonObjTax.optString("tax_pack_m");
+                            }else if(mQuantity.matches("3")){
+                                taxPackage = jsonObjTax.optString("tax_pack_b");
+                            }
+
+                            //int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
+
+                           // DecimalFormat formater = new DecimalFormat("0.00");
+
+                           // String vdistacia = decimalFormat.format(distanceR);
+
+                            String distacia = String.format("%.2f", distanceR / 10000000);
+
+                            double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+
+                            sub_total_price_tv.setText(String.valueOf(subTotal));
+
+                        }
+
+
+                    }
+
+
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+
+            }
+
+            transparent_layer.setVisibility(View.GONE);
+            progressDialog.setVisibility(View.GONE);
+            TabLayoutUtils.enableTabs(PagerMainActivity.tabLayout,true);
+
+
+        }
+    });
+}
 
     public void getCartData(){
         mDatabase.keepSynced(true);
@@ -1432,4 +1544,6 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
 
 
     }
+
+
 }
