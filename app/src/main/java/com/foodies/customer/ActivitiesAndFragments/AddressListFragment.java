@@ -271,6 +271,8 @@ public class AddressListFragment extends RootFragment {
                                     AddressListModel addressListModel=arrayListAddress.get(position);
 
                                     if(fragment_callback!=null){
+                                        Log.d("OnItemClicked: ",addressListModel.toString());
+
                                         Bundle bundle = new Bundle();
                                         bundle.putSerializable("data",addressListModel);
                                         fragment_callback.Responce(bundle);

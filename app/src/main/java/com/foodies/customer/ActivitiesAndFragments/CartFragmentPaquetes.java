@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -122,6 +125,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
     FrameLayout cart_main_container;
     public static boolean ORDER_PLACED,UPDATE_NODE;
     Location location = new Location("localizacion 1");
+    LocationManager locationManager;
 
     Location location2 = new Location("localizacion 2");
     Boolean valLocation1 = false;
@@ -426,12 +430,10 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
                                 location.setLatitude(addressListModel.getLatCity());  //latitud
                                 location.setLongitude(addressListModel.getLongCity()); //longitud
 
-
-                                //   Calculate_Price();
                                 valLocation1 = true;
 
 
-                                calculateTax();
+                                calculateTax(city);
                             }
                         }
                     });
@@ -496,7 +498,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
                                 //   Calculate_Price();
                                 valLocation2 = true;
 
-                                calculateTax();
+                                calculateTax(city);
                             }
                         }
                     });
@@ -594,15 +596,17 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
         }
     }
 
-    public void calculateTax(){
+    public void calculateTax(String cityParam){
 
         if (valLocation1){
             if (valLocation2) {
-                float distance = location.distanceTo(location2);
-                Log.d("distancia", String.valueOf(distance));
+                if (cityParam != null) {
+                    float distance = location.distanceTo(location2);
+                    Log.d("distancia", String.valueOf(distance));
 
 
-                prueba(distance);
+                    prueba(distance,cityParam);
+                }
             }
         }
 
@@ -658,7 +662,7 @@ public class CartFragmentPaquetes extends Fragment implements View.OnClickListen
     }
 
 
-public void prueba(Float distanceR){
+public void prueba(Float distanceR,String cityS){
 
         //mQuantity
 
@@ -679,7 +683,7 @@ public void prueba(Float distanceR){
             e.printStackTrace();
         }
 
-    ApiRequest.Call_Api(context, Config.SHOW_DEALS, jsonObject, new Callback() {
+        ApiRequest.Call_Api(context, Config.showCountries, jsonObject, new Callback() {
         @Override
         public void Responce(String resp) {
 
@@ -691,44 +695,81 @@ public void prueba(Float distanceR){
                 if(code_id == 200) {
 
                     JSONObject json = new JSONObject(jsonResponse.toString());
-                    JSONArray jsonarray = json.getJSONArray("msg");
-
+                    JSONArray jsonarray = json.getJSONArray("cities");
+                    String taxPackage = null;
 
                     for (int i = 0; i < jsonarray.length(); i++) {
 
                         Log.d("consultaDatos", jsonarray.getJSONObject(i).toString());
 
                         JSONObject json1 = jsonarray.getJSONObject(i);
-                        JSONObject jsonObjRestaurant = json1.optJSONObject("Restaurant");
-                        JSONObject jsonObjTax = jsonObjRestaurant.optJSONObject("Tax");
+                        JSONObject jsonObjTax = jsonarray.getJSONObject(i).optJSONObject("Tax");
 
-                        String taxPackage = null;
+                        String dato = jsonObjTax.get("city").toString();
+                        Log.d("city1", dato.toString());
 
-                        if(jsonObjTax!=null) {
+                        Log.d("cityS", cityS.toString());
 
-                            if(mQuantity.matches("1")){
-                                taxPackage = jsonObjTax.optString("tax_pack_s");
-                            }else if(mQuantity.matches("2")){
-                                taxPackage = jsonObjTax.optString("tax_pack_m");
-                            }else if(mQuantity.matches("3")){
-                                taxPackage = jsonObjTax.optString("tax_pack_b");
+                        Log.d("mQuantity", mQuantity.toString());
+
+
+
+
+                        if(cityS.matches(dato) ){
+                            if (mQuantity.matches("1")) {
+                                taxPackage = jsonObjTax.get("tax_pack_s").toString();
+                            } else if (mQuantity.matches("2")) {
+                                taxPackage = jsonObjTax.get("tax_pack_m").toString();
+                            } else if (mQuantity.matches("3")) {
+                                taxPackage = jsonObjTax.get("tax_pack_b").toString();
                             }
-
-                            //int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
-
-                           // DecimalFormat formater = new DecimalFormat("0.00");
-
-                           // String vdistacia = decimalFormat.format(distanceR);
-
-                            String distacia = String.format("%.2f", distanceR / 10000000);
-
-                            double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
-
-                            sub_total_price_tv.setText(String.valueOf(69));
-
-
                         }
 
+                        Log.d("consultaDatos", dato.toString());
+
+                        String distacia = String.format("%.2f", distanceR / 10000000);
+
+                       // double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+
+                        Log.d("consultaDatos", dato.toString());
+
+                        sub_total_price_tv.setText(String.valueOf(taxPackage));
+
+                        //   Log.d("jsonObjTax", json1.toString());
+
+                    //    JSONObject dato = jsonObjTax.optJSONObject("city");
+
+                        Log.d("jsonObjTax", city);
+                       // Log.d("jsonObjTax1",dato.toString());
+
+/*
+                        String taxPackage = null;
+                        if(city == jsonObjTax.optJSONObject("city").toString()) {
+                            if (jsonObjTax != null) {
+
+                                if (mQuantity.matches("1")) {
+                                    taxPackage = jsonObjTax.optString("tax_pack_s");
+                                } else if (mQuantity.matches("2")) {
+                                    taxPackage = jsonObjTax.optString("tax_pack_m");
+                                } else if (mQuantity.matches("3")) {
+                                    taxPackage = jsonObjTax.optString("tax_pack_b");
+                                }
+
+                                //int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
+
+                                // DecimalFormat formater = new DecimalFormat("0.00");
+
+                                // String vdistacia = decimalFormat.format(distanceR);
+
+                                String distacia = String.format("%.2f", distanceR / 10000000);
+
+                                double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+
+                                sub_total_price_tv.setText(String.valueOf(69));
+
+
+                            }
+                        }*/
 
                     }
 
