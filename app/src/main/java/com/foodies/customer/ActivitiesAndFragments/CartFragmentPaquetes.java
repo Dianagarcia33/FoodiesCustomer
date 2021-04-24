@@ -742,8 +742,7 @@ public void prueba(Float distanceR,String cityS){
                         Log.d("jsonObjTax", city);
                        // Log.d("jsonObjTax1",dato.toString());
 
-/*
-                        String taxPackage = null;
+
                         if(city == jsonObjTax.optJSONObject("city").toString()) {
                             if (jsonObjTax != null) {
 
@@ -755,21 +754,21 @@ public void prueba(Float distanceR,String cityS){
                                     taxPackage = jsonObjTax.optString("tax_pack_b");
                                 }
 
-                                //int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
+                               // int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
 
-                                // DecimalFormat formater = new DecimalFormat("0.00");
+                                 //DecimalFormat formater = new DecimalFormat("0.00");
 
-                                // String vdistacia = decimalFormat.format(distanceR);
+                                 //String vdistacia = decimalFormat.format(distanceR);
 
-                                String distacia = String.format("%.2f", distanceR / 10000000);
+                               // String vdistacia = String.format("%.2f", distanceR / 10000000);
 
-                                double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+                              //  double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
 
-                                sub_total_price_tv.setText(String.valueOf(69));
+                                sub_total_price_tv.setText(String.valueOf(distanceR));
 
 
                             }
-                        }*/
+                        }
 
                     }
 
