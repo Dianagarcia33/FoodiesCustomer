@@ -707,6 +707,7 @@ public void prueba(Float distanceR,String cityS){
 
                         String dato = jsonObjTax.get("city").toString();
                         Log.d("city1", dato.toString());
+                        Log.d("city0", String.valueOf(jsonarray.length()));
 
                         Log.d("cityS", cityS.toString());
 
@@ -743,8 +744,8 @@ public void prueba(Float distanceR,String cityS){
                        // Log.d("jsonObjTax1",dato.toString());
 
 
-                        if(city == jsonObjTax.optJSONObject("city").toString()) {
-                            if (jsonObjTax != null) {
+                        //if(city == jsonObjTax.optJSONObject("city").toString()) {
+                        /*    if (jsonObjTax != null) {
 
                                 if (mQuantity.matches("1")) {
                                     taxPackage = jsonObjTax.optString("tax_pack_s");
@@ -753,6 +754,7 @@ public void prueba(Float distanceR,String cityS){
                                 } else if (mQuantity.matches("3")) {
                                     taxPackage = jsonObjTax.optString("tax_pack_b");
                                 }
+                                */
 
                                // int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
 
@@ -764,17 +766,17 @@ public void prueba(Float distanceR,String cityS){
 
                               //  double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
 
-                                sub_total_price_tv.setText(String.valueOf(distanceR));
+                              //  sub_total_price_tv.setText(String.valueOf(distanceR));
 
 
                             }
                         }
 
-                    }
+                    //}
 
 
 
-                }
+                //}
 
             } catch (JSONException e) {
                 e.printStackTrace();
