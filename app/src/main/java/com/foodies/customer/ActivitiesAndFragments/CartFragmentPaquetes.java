@@ -700,52 +700,16 @@ public void prueba(Float distanceR,String cityS){
 
                     for (int i = 0; i < jsonarray.length(); i++) {
 
-                        Log.d("consultaDatos", jsonarray.getJSONObject(i).toString());
 
                         JSONObject json1 = jsonarray.getJSONObject(i);
                         JSONObject jsonObjTax = jsonarray.getJSONObject(i).optJSONObject("Tax");
 
-                        String dato = jsonObjTax.get("city").toString();
-                        Log.d("city1", dato.toString());
-                        Log.d("city0", String.valueOf(jsonarray.length()));
-
                         Log.d("cityS", cityS.toString());
-
-                        Log.d("mQuantity", mQuantity.toString());
-
+                        Log.d("cityjson", jsonObjTax.getString("city").toString());
 
 
-
-                        if(cityS.matches(dato) ){
-                            if (mQuantity.matches("1")) {
-                                taxPackage = jsonObjTax.get("tax_pack_s").toString();
-                            } else if (mQuantity.matches("2")) {
-                                taxPackage = jsonObjTax.get("tax_pack_m").toString();
-                            } else if (mQuantity.matches("3")) {
-                                taxPackage = jsonObjTax.get("tax_pack_b").toString();
-                            }
-                        }
-
-                        Log.d("consultaDatos", dato.toString());
-
-                        String distacia = String.format("%.2f", distanceR / 10000000);
-
-                       // double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
-
-                        Log.d("consultaDatos", dato.toString());
-
-                        sub_total_price_tv.setText(String.valueOf(taxPackage));
-
-                        //   Log.d("jsonObjTax", json1.toString());
-
-                    //    JSONObject dato = jsonObjTax.optJSONObject("city");
-
-                        Log.d("jsonObjTax", city);
-                       // Log.d("jsonObjTax1",dato.toString());
-
-
-                        //if(city == jsonObjTax.optJSONObject("city").toString()) {
-                        /*    if (jsonObjTax != null) {
+                        if(cityS == jsonObjTax.getString("city").toString()) {
+                            if (jsonObjTax != null) {
 
                                 if (mQuantity.matches("1")) {
                                     taxPackage = jsonObjTax.optString("tax_pack_s");
@@ -754,29 +718,33 @@ public void prueba(Float distanceR,String cityS){
                                 } else if (mQuantity.matches("3")) {
                                     taxPackage = jsonObjTax.optString("tax_pack_b");
                                 }
-                                */
 
-                               // int dato = Integer.parseInt(distanceR)*Integer.parseInt(taxPackage);
+                               // int dato = Integer.parseInt(String.valueOf(distanceR))*Integer.parseInt(taxPackage);
 
-                                 //DecimalFormat formater = new DecimalFormat("0.00");
+                                Log.d("taxDato", String.valueOf(distanceR));
+                                Log.d("taxPackage", String.valueOf(taxPackage));
 
-                                 //String vdistacia = decimalFormat.format(distanceR);
 
-                               // String vdistacia = String.format("%.2f", distanceR / 10000000);
 
-                              //  double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+                                 DecimalFormat formater = new DecimalFormat("0.00");
 
-                              //  sub_total_price_tv.setText(String.valueOf(distanceR));
+                                 String vdistacia = formater.format(distanceR);
+
+                                String distacia = String.format("%.2f", distanceR / 10000000);
+
+                                double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
+
+                               sub_total_price_tv.setText(String.valueOf(subTotal));
 
 
                             }
                         }
 
-                    //}
+                    }
 
 
 
-                //}
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
