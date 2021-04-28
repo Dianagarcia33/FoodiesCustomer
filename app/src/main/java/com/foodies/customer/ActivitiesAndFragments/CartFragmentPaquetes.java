@@ -730,7 +730,7 @@ public void prueba(Float distanceR,String cityS){
 
                                  String vdistacia = formater.format(distanceR);
 
-                                String distacia = String.format("%.2f", distanceR / 10000000);
+                                String distacia = String.format("%.2f", Integer.parseInt(vdistacia) / 10000000);
 
                                 double subTotal = Double.parseDouble(distacia) * Double.parseDouble(taxPackage);
 
