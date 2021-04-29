@@ -32,6 +32,13 @@
                 android:textSize="15dp"
                 android:text="@string/textPaquetes"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="12dp"
+                android:text="*Selecciona qué vehículo debemos llevar"
+                />
 
 
 
@@ -52,27 +59,27 @@
 
                     <RadioButton
                         android:id="@+id/btnpq1"
-                        android:button="@drawable/ic_baseline_attach_money_24"
+                        android:button="@drawable/iconomoto"
                         android:background="@drawable/selected_ratio"
-                        android:layout_width="60dp"
+                        android:layout_width="70dp"
                         android:checked="true"
-                        android:layout_height="60dp"  />
+                        android:layout_height="70dp"  />
 
                     <RadioButton
                         android:id="@+id/btnpq2"
                         android:layout_marginRight="30sp"
                         android:layout_marginLeft="30sp"
-                        android:button="@drawable/ic_baseline_attach_money_24"
+                        android:button="@drawable/iconocarro"
                         android:background="@drawable/selected_ratio"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"  />
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"  />
 
                     <RadioButton
                         android:id="@+id/btnpq3"
-                        android:button="@drawable/ic_baseline_attach_money_24"
+                        android:button="@drawable/iconocamion"
                         android:background="@drawable/selected_ratio"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp" />
+                        android:layout_width="70dp"
+                        android:layout_height="70dp" />
 
                 </RadioGroup>
 
@@ -97,7 +104,7 @@
                     android:gravity="top"
                     android:layout_margin="5dp"
                     android:padding="2dp"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:background="@drawable/backinputs3" />
 
             </LinearLayout>
@@ -108,7 +115,7 @@
                 android:hint="@string/instrucciones_adicionales"
                 android:background="#eeeeee"
                 android:layout_margin="5dp"
-                android:textSize="17dp"
+                android:textSize="19dp"
                 android:padding="5dp"
                 android:layout_width="match_parent"
                 android:gravity="top"
